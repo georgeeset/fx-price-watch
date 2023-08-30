@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% include 'partials/_navbar.html' %}
+
+<form method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <label for="medium">Alert Medium</label>
+    <select name="alert_medium" id="medium">
+        {% for choice in user_alert_medium%}
+        <option value={{ choice.alert_type }}>{{ choice }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <input type='submit', name='add' value='Update'>
+</form>
+{%endblock%}

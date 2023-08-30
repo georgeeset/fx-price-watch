@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% include 'partials/_navbar.html' %}
+
+<p> Welcome {{ first_name }}</p>
+<p> My Alerts </p>
+<div>
+    <ul>
+        {% for item in alert_list%}
+            <li> 
+                <div class=item.status>
+                    <span>{{ item.currency_pair }} <i> Created: {{ item.time_created }}</i></span><br>
+                    <span> Triggered if {{ item.condition }} @ {{ item.target_price }} </span><br>
+                    <span> Alert Set to Repeat every {{ item.timeframe }} candlestick timeframe {{ item.repeat_alarm }} time(s)</span><br>
+                    <span> Alert will be sent to your {{ item.alert_medium }}</span><br>
+                    <span> Expiration: {{ item.expiration }} </span><br>
+
+                   <div class='action'> {% if item.is_editable %}
+                        <a class="btn btn-edit" href="/user/edit-alert/{{ item.id }}" role="button">Edit</a>
+                        <a class="btn btn-del" href="/user/delete-alert/{{ item.id }}" role="button">Delete</a>
+                    {% endif %}</div>
+
+                    <br><br>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{%endblock%}

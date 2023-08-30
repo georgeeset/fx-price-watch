@@ -1,0 +1,74 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% include 'partials/_navbar.html' %}
+<br><br>
+
+<div>
+    {% for method in alert_medium %}
+
+        {% if method.alert_type == 'email' %}
+            <div>
+                Email: {{method.alert_id }}
+                {% if method.verified %}
+                    <i> Verified </i>
+                {% else %}
+                    <div>
+                        <form method='post'>
+                            {% csrf_token %}
+                            {{ verification_form }}
+                            <input type='submit', name='verify_email' value='verify'>
+                        </form>
+                        <form method='post'>
+                            {% csrf_token %}
+                            <input type='submit', name='resend_email' value='Resend'>
+                        </form>
+                    <div>
+                {% endif %}
+            </div>
+        
+        {% elif method.alert_type == 'telegram' %}
+        <div>
+            Telegram: {{method.alert_id }}
+            {% if method.verified %}
+                <i> Verified </i>
+            {% else %}
+                <div>
+                    <p>Verify your TelegramAccount.<br>
+                       1) On your Telegram App, Search for @fx-market-watch-bot <br>
+                       2) Send your confirmation code <b> {{ method.verification_code }} </b> to the bot <br>
+                       3) Click verify button below to veify the confirmation code</p>
+                </div>
+                <form method='post'>
+                    {% csrf_token %}
+                    <input type='submit', name='verify_telegram' value='verify'>
+                </form>
+            {% endif %}
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+<br><br>
+
+<div>
+    <p>Update Email</p>
+    <form method='post'>
+        {% csrf_token %}
+        {{ email_form }}
+        <input type='submit', name='add_email' value='Update'>
+    </form>
+</div>
+<br><br>
+<div>
+    <p>Update Telegram account</p>
+    <form method='post'>
+        {% csrf_token %}
+        {{ telegram_form}}
+        <input type='submit', name='add_telegram' value='Update'>
+    </form>
+</div>
+
+<br><br>
+
+{%endblock%}
