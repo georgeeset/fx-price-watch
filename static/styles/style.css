@@ -1,7 +1,58 @@
 
 body {
-    background-color: blue;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  background-repeat: no-repeat;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("imgs/background.jpg");
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  font-family: var(--font-family-primary);
+  color: var(--body-fg);
+}
+
+
+.banner {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: start;
+  text-shadow: 2px 2px #000000;
+  background-image: linear-gradient(to right, #FFA500, #FFA500 50%, #800080 50%, #800080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: white;
+  padding-left: 50px;
+}
+
+.banner:hover {
+  background-image: linear-gradient(to right, #800080, #800080 50%, #FFA500 50%, #FFA500);
+}
+
+.navbar{
+  display: block;
+  align-content: center;
+  text-align: center;
+  background-color: white;
+  color: white;
+  padding: 10px;
+}
+
+.nav-item {
+  background-color: rgb(96, 33, 156);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.disabled {
+  background-color: brown
+}
+
+.nav-item:hover{
+  background-color: black;
+  border-color: rgb(96, 33, 156);
+  font-size: 1rem;
+}
 
