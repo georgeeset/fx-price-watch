@@ -1,24 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
-<p> Index page title</p>
-<p> this is an index page for fx market watch</p>
 
-<form method='post'>
-    {% csrf_token %}
-    {{ signupform.as_p }}
-    <input type='submit', name='signup' value='Register'>
-</form>
+<div class="indexHead">
+    <img class="bana" src="../static/styles/imgs/fxmarketwatch1.png" alt="FX MARKET WATCH logo">
+<div>
 
-{% if login_error_message%}
-    <p class='formError'>
-         Error in form! {{ login_error_message }}
-    </p>
-{%endif%}
+    <center>
+		<div class="row">
+			<div class="col-md-4 col-sm-6"
+				style="background-color: chartreuse;">
+				<br>
+                <form method='post' class="signupForm">
+                    {% csrf_token %}
+                    {{ signupform.as_p }}
+                    <input type='submit', name='signup' value='Register'>
+                  </form>
+			</div>
+			<div class="col-md-4 col-sm-6"
+				style="background-color: black;">
+				<br>
+                {% if login_error_message%}
+                <p class='formError'>
+                    Error in form! {{ login_error_message }}
+                </p>
+            {%endif%}
 
-<form method='post'>
-    {% csrf_token %}
-    {{ loginform.as_p }}
-    <input type='submit', name='login' value='Login'>
-    
-</p>
+            <form method='post'>
+                {% csrf_token %}
+                {{ loginform.as_p }}
+                <input type='submit', name='login' value='Login'>
+            </form>
+			</div>
+			<!-- Sum of SM col exceeds 12 so if the screen
+				is small (less than 576px) the last column
+				will Automatically get aligned in the next row -->
+			<div class="col-md-4 col-sm-6"
+				style="background-color: rebeccapurple;">
+				<br>
+			</div>
+		</div>
+	</center>
+
     {%endblock%}

@@ -1,13 +1,18 @@
 
 body {
   background-repeat: no-repeat;
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5)), url("imgs/background.jpg");
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url("imgs/background.jpg");
   background-size: cover;
   margin: 0;
   padding: 0;
   font-size: 0.875rem;
   font-family: var(--font-family-primary);
   color: var(--body-fg);
+  /* setup the page body layout*/
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+   /* setup the page body layout*/
 }
 
 .banner-head {
@@ -76,4 +81,30 @@ body {
 .menu .item {
   list-style: none;
   float: left;
+}
+
+
+.iconItem {
+  display: inline;
+}
+
+.container {
+  background-color: whitesmoke;
+  padding-left: 50px;
+  padding-bottom: 50px;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.bodyContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.column {
+  width: 30%;
+  margin-right: 10px;
+  display: inline;
 }

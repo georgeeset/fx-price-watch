@@ -2,7 +2,7 @@ from django.db import models
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.forms import ModelForm
+from django.forms import ModelForm, PasswordInput, TextInput
 from fxmktwatch.utils import constants
 from datetime import datetime
 from phonenumber_field.formfields import PhoneNumberField
