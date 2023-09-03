@@ -1,15 +1,39 @@
 
-.indexHeead {
+*{
+    box-sizing: border-box;
+ }
+
+.indexHead {
     display: block;
     background-color: whitesmoke;
 }
 
 .bana{
-    width: 40%;
+    width: 30%;
     height: auto;
 }
 
-
-.signupForm {
-    background-color: red;
+.splitColumn {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    /* background-color: rgba(255, 255, 242, 0.712) */
 }
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.splitRow{
+    justify-content: space-between;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 750px) {
+    .splitColumn {
+      width: 100%;
+    }
+  }

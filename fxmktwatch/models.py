@@ -25,16 +25,21 @@ class SignupForm(UserCreationForm):
                                  required=True,
                                  widget=forms.TextInput(attrs={'placeholder': 'First Name',
                                                                'class': 'form-control',
+                                                               'id': 'name',
+                                                               'autocomplete': 'given-name'
                                                                }))
     last_name = forms.CharField(max_length=50,
                                 required=True,
                                 widget=forms.TextInput(attrs={'placeholder': 'Last Name',
                                                               'class': 'form-control',
+                                                              'id': 'last_name'
                                                               }))
     username = forms.CharField(max_length=50,
                                required=True,
                                widget=forms.TextInput(attrs={'placeholder': 'Username',
                                                              'class': 'form-control',
+                                                             'id': 'reg_username',
+                                                             'autocomplete':'username'
                                                              }))
     # email = forms.EmailField(required=True,
     #                          widget=forms.TextInput(attrs={'placeholder': 'Email',
@@ -52,17 +57,19 @@ class SignupForm(UserCreationForm):
                                 widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password',
                                                                   'class': 'form-control',
                                                                   'data-toggle': 'password',
-                                                                  'id': 'password',
+                                                                  'id': 'password2',
                                                                   }))
     interests = forms.MultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple,
+        widget=forms.CheckboxSelectMultiple( attrs={
+            'class': 'checkBoxes',
+        }),
         required=True,
         choices=[
             ('Forex','Forex' ),
             ('Crypto', 'Crypto'),
             ('Deriv', 'Deriv'),
             ('Metals', 'Metals'),
-        ]
+        ],
     )
 
     class Meta:
@@ -209,5 +216,10 @@ class AlertForm(forms.Form):
     note = forms.CharField(required=True, max_length=100, min_length=10, widget=forms.Textarea(attrs={'size': '60', }))
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Username')
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={
+        'autocomplete': 'username',
+         'class': 'form-control'
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control'
+    }))

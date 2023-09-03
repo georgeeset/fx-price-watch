@@ -1,11 +1,11 @@
 
 body {
   background-repeat: no-repeat;
-  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url("imgs/background.jpg");
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(212, 149, 209, 0.7)), url("imgs/background.jpg");
   background-size: cover;
   margin: 0;
   padding: 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-family: var(--font-family-primary);
   color: var(--body-fg);
   /* setup the page body layout*/
@@ -14,6 +14,7 @@ body {
   flex-direction: column;
    /* setup the page body layout*/
 }
+
 
 .banner-head {
   background-color: whitesmoke;
@@ -82,7 +83,6 @@ body {
   list-style: none;
   float: left;
 }
-
 
 .iconItem {
   display: inline;
