@@ -1,9 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="indexHead">
+{% comment %} <div class="indexHead">
     <img class="bana" src="../static/styles/imgs/fxmarketwatch1.png" alt="FX MARKET WATCH logo">
-<div>
+<div> {% endcomment %}
+
+<div class="banner-head">
+  <div class="banner">
+      Fx Market Watch
+  </div>
+  <div class="slogan">
+    We poke you when price moves.
+  </div>
+</div>
+
+<div  class="navbar">
+  <ul class="menu">
+      <li ><a class="item" href=""> Login</a></li>
+      <li ><a class="item" href="">Signup</a></li>
+     
+  </ul>
+</div>
 
   <div class="splitRow">
     <div class="splitColumn">
@@ -13,7 +30,7 @@
         <form method='post' class="signupForm">
           {% csrf_token %}
           {{ signupform.as_p }}
-          <input type='submit', name='signup' value='Register'>
+          <input type='submit' name='signup' value='Register'>
         </form>
       
     </div>

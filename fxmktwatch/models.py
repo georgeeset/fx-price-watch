@@ -191,13 +191,15 @@ class Alerts(models.Model):
 
 class EmailAlertForm(forms.Form):
     # medium = forms.models.CharField(max_length=50, required=True, widget=forms.Select(choices=MEDIUM_CHOICES))
-    email = forms.EmailField()
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
 class TelegramAlertForm(forms.Form):
-    telegram_id = forms.CharField(max_length=20)
+    telegram_id = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class':'form-control'}))
 
 class WhatsappAlertForm(forms.Form):
-    number = PhoneNumberField()
+    number = PhoneNumberField(widget=forms.NumberInput(attrs={
+        'class':'form-control'
+    }))
 
 class CodeVerificationForm(forms.Form):
     code = forms.IntegerField(required=True)

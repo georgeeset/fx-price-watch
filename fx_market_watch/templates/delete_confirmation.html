@@ -4,20 +4,25 @@
 
 {% include 'partials/_navbar.html' %}
 
-<div>
-    <h4>Delete Alert</h4>
+<div class="center">
+    <h1 class="warning">Delete Alert</h1>
     <br>
-    <p>Warning!!!</p>
+    <h4>Warning!!!</4h>
 
-    <p>this action cannot be undone..<br>
-    Are you sure you want to delete this Alert?</p>
+    <h3>
+    <p>This action cannot be undone..<br>
+        Are you sure you want to delete this Alert?
+    </p>
+    <h3>
+    <br> <br>
 
-    <div class="delete_action">
+    <div class="deleteAction">
         <form method="post">
             {% csrf_token %}
-            <input type='submit', name='yes' value='Yes'>
-            <input type='submit', name='no' value='No'>
+            <input type='submit' name='yes' value='Yes'>
+            <input type='submit' name='no' value='No'>
         </form>
     </div>
+
 </div>
 {%endblock%}
