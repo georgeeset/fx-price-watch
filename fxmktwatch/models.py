@@ -202,20 +202,22 @@ class WhatsappAlertForm(forms.Form):
     }))
 
 class CodeVerificationForm(forms.Form):
-    code = forms.IntegerField(required=True)
+    code = forms.IntegerField(required=True, widget=forms.NumberInput(attrs={
+        'class': 'form-control'
+    }))
 
 class AlertForm(forms.Form):
 
-    currency_pair = forms.CharField(max_length=10, required=True, widget=forms.Select(choices=CURRENCY_CHOICES) )
-    condition = forms.CharField(max_length=50, required=True, widget=forms.Select(choices=CONDITION_CHOICES))
+    currency_pair = forms.CharField(max_length=10, required=True, widget=forms.Select(choices=CURRENCY_CHOICES, attrs={ 'class':'form-control'}) )
+    condition = forms.CharField(max_length=50, required=True, widget=forms.Select(choices=CONDITION_CHOICES, attrs={ 'class':'form-control'}))
 
-    target_price = forms.FloatField(required=True, initial=0.001, widget=forms.NumberInput(attrs={'id': 'form_homework', 'step': "0.001"}))
+    target_price = forms.FloatField(required=True, initial=0.001, widget=forms.NumberInput(attrs={'id': 'float_form', 'class':'form-control'}))
 
-    timeframe = forms.CharField(max_length=4, required=True, widget=forms.Select(choices=TIMEFRAME_CHOICES))
-    repeat_alarm = forms.IntegerField(required=True, min_value=1)
-    expiration_unit = forms.CharField(max_length=10, required=True, widget=forms.Select(choices=TIMEUNIT_CHOICES))
-    expiration_value = forms.IntegerField(required=True, min_value=1)
-    note = forms.CharField(required=True, max_length=100, min_length=10, widget=forms.Textarea(attrs={'size': '60', }))
+    timeframe = forms.CharField(max_length=4, required=True, widget=forms.Select(choices=TIMEFRAME_CHOICES, attrs={ 'class':'form-control'}))
+    repeat_alarm = forms.IntegerField(required=True, min_value=1, initial=1, widget=forms.NumberInput(attrs={ 'class':'form-control'},))
+    expiration_unit = forms.CharField(max_length=10, required=True, widget=forms.Select(choices=TIMEUNIT_CHOICES, attrs={ 'class':'form-control'}))
+    expiration_value = forms.IntegerField(required=True, min_value=1, initial=1, widget=forms.NumberInput(attrs={ 'class':'form-control'}))
+    note = forms.CharField(required=True, max_length=100, min_length=10, widget=forms.Textarea(attrs={'size': '60', 'class':'form-control'}))
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={

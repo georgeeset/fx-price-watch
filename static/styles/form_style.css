@@ -41,3 +41,8 @@ input[type=submit]:hover {
     font-size: large;
     color: red;
 }
+
+.centerForm {
+    justify-content: center;
+    padding-left: 30%;
+}

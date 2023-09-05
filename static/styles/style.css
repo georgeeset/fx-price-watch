@@ -1,7 +1,7 @@
 
 body {
   background-repeat: no-repeat;
-  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(212, 149, 209, 0.7)), url("imgs/background.jpg");
+  background: repeating-radial-gradient(rgba(255, 255, 255, 0.8), rgba(212, 149, 209, 0.9)), url("imgs/background.jpg");
   background-size: cover;
   margin: 0;
   padding: 0;

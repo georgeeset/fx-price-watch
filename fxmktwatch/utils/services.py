@@ -36,8 +36,9 @@ class TelegramServices:
         else:
             response = requests.post(url).json()
 
-        with open("lastread", "w") as file:
-            file.write(str(response.get('result')[-1].get('update_id')))
+        if response.get('result'):
+            with open("lastread", "w") as file:
+                file.write(str(response.get('result')[-1].get('update_id')))
 
         return response
 

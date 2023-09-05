@@ -1,13 +1,14 @@
 {% extends 'base.html'%}
 
 {% block content %}
-
+{% include 'partials/_header.html' %}
 {% include 'partials/_navbar.html' %}
 
-<p> Welcome {{ first_name }}</p>
+<div class:'center'>
+<h3> Welcome {{ first_name }}</h3>
+</div>
 <p> My Alerts </p>
 <div>
-
     <div class="splitRow">
         <div class="splitColumn">
             <div>
