@@ -4,10 +4,11 @@
 {% include 'partials/_header.html' %}
 {% include 'partials/_navbar.html' %}
 
-<div class:'center'>
-<h3> Welcome {{ first_name }}</h3>
+
+<div class="subTitle">
+    <h3> Welcome {{ first_name }}</h3>
+    <h4> My Alerts </h4>
 </div>
-<p> My Alerts </p>
 <div>
     <div class="splitRow">
         <div class="splitColumn">
@@ -29,7 +30,7 @@
                                 {% endif %}
                             </span>
                             <br>
-                            <span> Triggered if {{ item.condition }} @ {{ item.target_price }} </span><br>
+                            <span> Triggered if {{ item.setup_condition }} @ {{ item.target_price }} </span><br>
                             <span> Alert Set to Repeat every {{ item.timeframe }} candlestick timeframe {{ item.repeat_alarm }} time(s)</span><br>
                             <span> Alert will be sent to your {{ item.alert_medium }}</span><br>
                             <span> Expiration: {{ item.expiration }} </span><br>
@@ -66,7 +67,7 @@
                                 <img src="../static/styles/imgs/email-logo.png" alt="Email" height="35" width="35">
                                 {% endif %}
                             </span><br>
-                            <span> Triggered if {{ item.condition }} @ {{ item.target_price }} </span><br>
+                            <span> Triggered if {{ item.setup_condition }} @ {{ item.target_price }} </span><br>
                             <span> Alert Set to Repeat every {{ item.timeframe }} candlestick timeframe {{ item.repeat_alarm }} time(s)</span><br>
                             <span> Alert will be sent to your {{ item.alert_medium }}</span><br>
                             <span> Expiration: {{ item.expiration }} </span><br>

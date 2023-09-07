@@ -101,8 +101,28 @@ CURRENCY_CHOICES = [
     ('USDHKD', 'USD/HKD'),
     ('EURGBP', 'EUR/GBP'),
 
-    ('BTC/USDT', 'BTC/USDT'),
-    ('ETH/USDT', 'ETH/USDT'),
+    # {'id':'frxAUDUSD', 'table': 'AUDUSD'},
+    # {'id':'frxEURGBP', 'table': 'EURGBP'},
+    # {'id':'frxEURJPY', 'table': 'EURJPY'},
+    # {'id':'frxEURUSD', 'table': 'EURUSD'},
+    # {'id':'frxGBPUSD', 'table': 'GBPUSD'},
+    # {'id':'frxUSDCAD', 'table': 'USDCAD'},
+    # {'id':'frxUSDCHF', 'table': 'USDCHF'},
+    # {'id':'frxUSDJPY', 'table': 'USDJPY'},
+    ('frxXAUUSD', 'GoldUSD'),
+    ( 'Volatility_50_Index', 'Volatility 50 Index'),
+    ( 'Volatility_75_Index', 'Volatility 75 Index'),
+    ( 'Volatility_100_Index', 'Volatility 100 Index'),
+    ( 'Step_Index', 'Step Index'),
+    ( 'Boom_500_Index', 'Boom 500 Index'),
+    ( 'Boom_1000_Index', 'Boom 1000 Index'),
+    ( 'Crash_500_Index', 'Crash 500 Index'),
+    ( 'Crash_1000_Index', 'Crash 1000 Index'),
+    ( 'Jump_50_Index', 'Jump 50 Index'),
+    ( 'Jump_75_Index', 'Jump 75 Index'),
+    ( 'Jump_100_Index','Jump 100 Index'),
+    # ('BTC/USDT', 'BTC/USDT'),
+    # ('ETH/USDT', 'ETH/USDT'),
 ]
 
 CONDITION_CHOICES = [
@@ -165,8 +185,8 @@ class AlertMedium(models.Model):
 
 
 class Alerts(models.Model):
-    currency_pair = models.CharField(max_length=10, null=False)
-    condition = models.CharField(max_length=50, null=False)
+    currency_pair = models.CharField(max_length=30, null=False)
+    setup_condition = models.CharField(max_length=50, null=False)
     target_price = models.FloatField(null=False, )
     timeframe = models.CharField(max_length=4, null=False)
     repeat_alarm = models.PositiveSmallIntegerField(null=False, default=1)
@@ -186,7 +206,7 @@ class Alerts(models.Model):
         return datetime.utcnow().replace(tzinfo=pytz.UTC) < self.expiration.replace(tzinfo=pytz.UTC)
 
     def __str__(self):
-        return f'{__name__}, currency_pair => {self.currency_pair}, condition => {self.condition}'
+        return f'{__name__}, currency_pair => {self.currency_pair}, setup_condition => {self.setup_condition}'
 
 
 class EmailAlertForm(forms.Form):
@@ -206,10 +226,11 @@ class CodeVerificationForm(forms.Form):
         'class': 'form-control'
     }))
 
+
 class AlertForm(forms.Form):
 
-    currency_pair = forms.CharField(max_length=10, required=True, widget=forms.Select(choices=CURRENCY_CHOICES, attrs={ 'class':'form-control'}) )
-    condition = forms.CharField(max_length=50, required=True, widget=forms.Select(choices=CONDITION_CHOICES, attrs={ 'class':'form-control'}))
+    currency_pair = forms.CharField(max_length=30, required=True, widget=forms.Select(choices=CURRENCY_CHOICES, attrs={ 'class':'form-control'}) )
+    setup_condition = forms.CharField(max_length=50, required=True, widget=forms.Select(choices=CONDITION_CHOICES, attrs={ 'class':'form-control'}))
 
     target_price = forms.FloatField(required=True, initial=0.001, widget=forms.NumberInput(attrs={'id': 'float_form', 'class':'form-control'}))
 
@@ -217,7 +238,8 @@ class AlertForm(forms.Form):
     repeat_alarm = forms.IntegerField(required=True, min_value=1, initial=1, widget=forms.NumberInput(attrs={ 'class':'form-control'},))
     expiration_unit = forms.CharField(max_length=10, required=True, widget=forms.Select(choices=TIMEUNIT_CHOICES, attrs={ 'class':'form-control'}))
     expiration_value = forms.IntegerField(required=True, min_value=1, initial=1, widget=forms.NumberInput(attrs={ 'class':'form-control'}))
-    note = forms.CharField(required=True, max_length=100, min_length=10, widget=forms.Textarea(attrs={'size': '60', 'class':'form-control'}))
+    note = forms.CharField(required=True, max_length=100, min_length=10, widget=forms.Textarea(attrs={'size': '30', 'class':'form-control'}))
+
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={

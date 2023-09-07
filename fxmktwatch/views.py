@@ -70,12 +70,13 @@ def record_alert(alert_form:AlertForm, this_user:UserInfo,  alert_method:AlertMe
 
     if new_alert is None:
         new_alert = Alerts()
+
     if alert_form.is_valid():
         # print(alertForm.data)
         # new_alert = Alerts()
 
         new_alert.currency_pair = alert_form.cleaned_data['currency_pair']
-        new_alert.condition = alert_form.cleaned_data['condition']
+        new_alert.setup_condition = alert_form.cleaned_data['setup_condition']
         new_alert.timeframe = alert_form.data['timeframe']
         new_alert.repeat_alarm = alert_form.data['repeat_alarm']
         new_alert.expiration_unit = alert_form.data['expiration_unit']
@@ -96,9 +97,18 @@ def record_alert(alert_form:AlertForm, this_user:UserInfo,  alert_method:AlertMe
             HttpResponse('Somethin went wrong with expiraiton date')
                 
         return new_alert
-
-    return None
-
+    else:
+        print('Problem dey here')
+        print(f"""{alert_form.data.get('currency_pair')}
+                    {alert_form.data.get('setup_condition')}
+                    {alert_form.data.get('target_price')}
+                    {alert_form.data.get('timeframe')}
+                    {alert_form.data.get('repeat_alarm')}
+                    {alert_form.data.get('expiration_unit')}
+                    {alert_form.data.get('expiration_value')}
+                    {alert_form.data.get('note')}
+                    {alert_form.data.get('alert_medium')}""")
+        return None
 
 def add_alert(request):
     if not request.user.is_authenticated:
@@ -113,7 +123,7 @@ def add_alert(request):
     alertForm = AlertForm()
     if request.method == 'POST':
         alert_form = AlertForm(request.POST)
-        
+
         # print(thisUser.id)
         form_alert_medium = request.POST['alert_medium']
         print(form_alert_medium)
@@ -126,6 +136,7 @@ def add_alert(request):
             if new_alert:
                 new_alert.save(force_insert=True)
                 print('alert_saved===*')
+                return redirect('/user')
 
             alertForm = AlertForm()
     user_alert_medium = AlertMedium.objects.filter(user=this_user, verified = True)
@@ -148,7 +159,7 @@ def edit_alert(request, id):
 
         init_data = {
             'currency_pair' : to_edit.currency_pair,
-            'condition' : to_edit.condition,
+            'setup_condition' : to_edit.setup_condition,
             'timeframe' : to_edit.timeframe,
             'repeat_alarm' : to_edit.repeat_alarm,
             'expiration_unit' : to_edit.expiration,

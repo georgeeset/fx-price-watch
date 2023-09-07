@@ -19,7 +19,7 @@
     height: 25px;
     width: 25px;
     background-color: #eee;
-  }
+}
 
 input[type=submit] {
     background-color: #509edd;
@@ -43,6 +43,5 @@ input[type=submit]:hover {
 }
 
 .centerForm {
-    justify-content: center;
     padding-left: 30%;
 }
