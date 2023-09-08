@@ -91,6 +91,7 @@ DATABASES = {
 # trusted origins thing
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
+    'http://fxmarketwatch.esetautomation.tech'
 ]
 
 
