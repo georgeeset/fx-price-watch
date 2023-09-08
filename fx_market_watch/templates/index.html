@@ -10,6 +10,7 @@
 
   <div class="splitRow">
     <div class="splitColumn">
+      <div class="signup-form">
       <div>
         <h1>Register</h1>
       </div>
@@ -18,24 +19,26 @@
           {{ signupform.as_p }}
           <input type='submit' name='signup' value='Register'>
         </form>
-      
+      </div>
     </div>
     <div class="splitColumn">
-      <div>
-        <h1>Login</h1>
-      </div>
-        {% if login_error_message%}
-            <p class='formError'>
-                Error in form! {{ login_error_message }}
-            </p>
-        {%endif%}
+      <div class="login-form">
+        <div>
+          <h1>Login</h1>
+        </div>
+          {% if login_error_message%}
+              <p class='formError'>
+                  Error in form! {{ login_error_message }}
+              </p>
+          {%endif%}
 
-        <form method='post'>
-            {% csrf_token %}
-            {{ loginform.as_p }}
-            <input type='submit', name='login' value='Login'>
-        </form>
-    </div>
+          <form method='post'>
+              {% csrf_token %}
+              {{ loginform.as_p }}
+              <input type='submit', name='login' value='Login'>
+          </form>
+      </div>
+  </div>
   </div>
 
 {%endblock%}
