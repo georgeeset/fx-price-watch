@@ -10,21 +10,12 @@
 
   <div class="splitRow">
     <div class="splitColumn">
-      <div class="signup-form">
-      <div>
-        <h1>Register</h1>
-      </div>
-        <form method='post' class="signupForm">
-          {% csrf_token %}
-          {{ signupform.as_p }}
-          <input type='submit' name='signup' value='Register'>
-        </form>
-      </div>
+      <img id="slideShow" src="/static/styles/imgs/whatsapp-logo.png" alt="WhatsApp" height="35" width="35">
     </div>
     <div class="splitColumn">
-      <div class="login-form">
+      <div id="login-form" class="loginContainer">
         <div>
-          <h1>Login</h1>
+          <h3>Login</h3>
         </div>
           {% if login_error_message%}
               <p class='formError'>
@@ -38,7 +29,19 @@
               <input type='submit', name='login' value='Login'>
           </form>
       </div>
-  </div>
+
+      <div id="signup-form" class="signupContainer">
+        <div>
+          <h3>Register</h3>
+        </div>
+          <form method='post'>
+            {% csrf_token %}
+            {{ signupform.as_p }}
+            <input type='submit' name='signup' value='Register'>
+          </form>
+        </div>
+
+    </div>
   </div>
 
 {%endblock%}

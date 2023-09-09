@@ -1,13 +1,23 @@
-const loginForm = document.querySelector('.login-form');
-const signupForm = document.querySelector('.signup-form');
-const toggleForms = () => {
-//   loginForm.classList.toggle('display');
-//   signupForm.classList.toggle('display');
-    print("login pressed")
-};
+const loginForm = document.getElementById('login-form');
+const signupForm = document.getElementById('signup-form');
+var current_state="signup";
 
-const loginButton = document.querySelector('button[name="login"]');
-loginButton.addEventListener('click', toggleForms);
+const showLogin = () => {
+    loginForm.style.opacity = '1';
+    loginForm.style.visibility = 'visible';
+    signupForm.style.opacity = '0';
+    signupForm.style.visibility = 'hidden';
+}
 
-const signupButton = document.querySelector('button[name="signup"]');
-signupButton.addEventListener('click', toggleForms);
+const showSignup = () => {
+    loginForm.style.opacity = '0';
+    loginForm.style.visibility = 'hidden';
+    signupForm.style.opacity = '1';
+    signupForm.style.visibility = 'visible';
+}
+
+const loginButton = document.getElementById("btnLogin");
+loginButton.addEventListener('click', showLogin);
+
+const signupButton = document.getElementById("btnSignup");
+signupButton.addEventListener('click', showSignup);

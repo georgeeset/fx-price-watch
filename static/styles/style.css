@@ -96,6 +96,8 @@ body {
   padding-left: 50px;
   padding-bottom: 50px;
   padding-top: 10px;
+  position:absolute;
+  width: 100%;
 }
 
 footer {
@@ -107,6 +109,7 @@ footer {
   flex-direction: row;
   justify-content: space-between;
 }
+
 .column {
   width: 30%;
   margin-right: 10px;
@@ -181,4 +184,19 @@ footer {
   font-size: xx-large;
   font-weight: 600;
   color: green;
+}
+
+.signupContainer, .loginContainer {
+  transition: opacity 0.3s linear;
+  position: absolute;
+  width:auto;
+  top: 200px;
+}
+
+.signupContainer {
+  opacity: 1;
+}
+
+.loginContainer {
+  opacity: 0;
 }
