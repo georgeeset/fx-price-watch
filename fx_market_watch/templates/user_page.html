@@ -12,7 +12,7 @@
 <div>
     <div class="splitRow">
         <div class="splitColumn">
-            <div>
+            <div class="cardInfo">
                 <h1>Active Alerts</h1>
               </div>
 
@@ -20,7 +20,7 @@
             {% if item.is_editable %}
                 <li class="cardItem">
                     <div class="card">
-                        <div class="cardInfo">
+                        <div>
                             <span>{{ item.currency_pair }} <i> Created: {{ item.time_created }}</i></span>
                             <span>
                                 {% if item.alert_medium.alert_type == 'telegram' %}

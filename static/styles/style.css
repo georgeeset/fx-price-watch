@@ -208,3 +208,8 @@ footer {
 .imageSlide{
   width: 100%;
 }
+
+.methodItem {
+  display: block;
+  padding: 2%;
+}

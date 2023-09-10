@@ -10,14 +10,13 @@
 <div>
     <div class="splitRow">
         <div class="splitColumn">
-            <div class="center">
-          
-
+            <div>
           
           {% for method in alert_medium %}
 
           {% if method.alert_type == 'email' %}
-              <div>
+                <br>
+              <div class="methodItem">
                 <img src="../static/styles/imgs/email-logo.png" alt="Email" height="35" width="35">
               
                   <span>Email: {{method.alert_id }}</span>
@@ -36,9 +35,9 @@
                               {% csrf_token %}
                               <input type='submit', name='resend_email' value='Resend'>
                           </form>
-                      <div>
+                        </div>
                   {% endif %}
-                </div>
+            </div>
                 <br><br>
           
           {% elif method.alert_type == 'telegram' %}
