@@ -1,6 +1,6 @@
 const indexSlide = document.getElementById('slideShow')
 
-const UPDATE_TIME_INTERVAL = 3000
+const UPDATE_TIME_INTERVAL = 6000
 
 //  Enter URLs of your own custom images
 const imagesArray = [
