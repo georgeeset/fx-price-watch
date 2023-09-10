@@ -11,9 +11,7 @@
     <div class="splitRow">
         <div class="splitColumn">
             <div class="center">
-          <div>
-            <h3>Active Alert Medium</h3>
-          </div>
+          
 
           
           {% for method in alert_medium %}
@@ -27,6 +25,7 @@
                   {% if method.verified %}
                       <span class="verified"> &check; </span>
                   {% else %}
+                      <br>
                       <div>
                           <form method='post'>
                               {% csrf_token %}

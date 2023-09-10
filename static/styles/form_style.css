@@ -42,6 +42,7 @@ input[type=submit]:hover {
     color: red;
 }
 
-/* .centerForm {
-    padding-left: 30%;
-} */
+.centerForm {
+    justify-content: center;
+    display: flex;
+}
