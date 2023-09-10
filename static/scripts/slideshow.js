@@ -17,6 +17,6 @@ setInterval(()=>{
     i = 0
   }
   else {i = i + 1};
-  console.log('i was run',i)
+  // console.log('i was run',i)
   indexSlide.src = imagesArray[i]
 },UPDATE_TIME_INTERVAL)

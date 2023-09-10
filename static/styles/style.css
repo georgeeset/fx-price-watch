@@ -66,8 +66,8 @@ body {
   background-color: rgb(124, 4, 124);
   text-decoration: none;
   font-size: medium;
-  margin-right: 20px;
-  margin-left: 10px;
+  margin-right: 1%;
+  margin-left: 1%;
 }
 
 .item:hover {
@@ -93,7 +93,6 @@ body {
 .container {
   background-color: whitesmoke;
   text-align: center;
-  padding-left: 50px;
   /* padding-bottom: 50px; */
   /* padding-top: 10px; */
   position:absolute;
@@ -189,16 +188,21 @@ footer {
 
 .signupContainer, .loginContainer {
   transition: opacity 0.3s linear;
-  position: absolute;
-  top: 200px;
+  /* position: absolute; */
+  position: relative;
+  justify-content: center;
+  display: flex;
+  /* top: 200px; */
 }
 
 .signupContainer {
   opacity: 1;
+  display: block;
 }
 
 .loginContainer {
   opacity: 0;
+  display: none
 }
 
 .imageSlide{

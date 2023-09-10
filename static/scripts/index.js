@@ -4,16 +4,16 @@ var current_state="signup";
 
 const showLogin = () => {
     loginForm.style.opacity = '1';
-    loginForm.style.visibility = 'visible';
+    loginForm.style.display = 'block';
     signupForm.style.opacity = '0';
-    signupForm.style.visibility = 'hidden';
+    signupForm.style.display = 'none';
 }
 
 const showSignup = () => {
     loginForm.style.opacity = '0';
-    loginForm.style.visibility = 'hidden';
+    loginForm.style.display = 'none';
     signupForm.style.opacity = '1';
-    signupForm.style.visibility = 'visible';
+    signupForm.style.display = 'block';
 }
 
 const loginButton = document.getElementById("btnLogin");

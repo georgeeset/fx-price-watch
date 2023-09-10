@@ -34,15 +34,20 @@
     /* padding: 5%; */
 }
 
+.flatButton {
+    background-color:rgb(175, 178, 238);
+    color: black;
+    padding: 10px;
+    margin: 5%;
+    border: 2px solid #000000;
+}
+
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
     .splitColumn {
       width: 100%;
       /* padding-left: 10%; */
     }
-    .signupContainer, .loginContainer {
-        transition: opacity 0.3s linear;
-        position: absolute;
-        top: 600px;
-      }
+   
   }
+
