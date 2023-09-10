@@ -94,8 +94,8 @@ body {
   background-color: whitesmoke;
   text-align: center;
   padding-left: 50px;
-  padding-bottom: 50px;
-  padding-top: 10px;
+  /* padding-bottom: 50px; */
+  /* padding-top: 10px; */
   position:absolute;
   width: 100%;
 }
@@ -189,7 +189,6 @@ footer {
 .signupContainer, .loginContainer {
   transition: opacity 0.3s linear;
   position: absolute;
-  width:auto;
   top: 200px;
 }
 
@@ -199,4 +198,8 @@ footer {
 
 .loginContainer {
   opacity: 0;
+}
+
+.imageSlide{
+  width: 100%;
 }

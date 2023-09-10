@@ -6,11 +6,10 @@
 <div> {% endcomment %}
 
   {% include 'partials/_header.html' %}
-  {% include 'partials/_indexnavbar.html' %}
 
   <div class="splitRow">
     <div class="splitColumn">
-      <img id="slideShow" src="/static/styles/imgs/whatsapp-logo.png" alt="WhatsApp" height="35" width="35">
+      <img class="imageSlide" id="slideShow" src="/static/styles/imgs/whatsapp-logo.png" alt="slideshow">
     </div>
     <div class="splitColumn">
       <div id="login-form" class="loginContainer">
@@ -26,7 +25,10 @@
           <form method='post'>
               {% csrf_token %}
               {{ loginform.as_p }}
-              <input type='submit', name='login' value='Login'>
+              <div class="loginAction">
+                <input type='submit', name='login' value='Login'>
+                <button class="flatButton" type="button" id="btnSignup" >Signup!</button>
+              </div>
           </form>
       </div>
 
@@ -37,8 +39,12 @@
           <form method='post'>
             {% csrf_token %}
             {{ signupform.as_p }}
+            <div class="signupAction'>
             <input type='submit' name='signup' value='Register'>
+            <button class="flatButton" type="button" id="btnLogin" >Login!</button>
+          </div>
           </form>
+
         </div>
 
     </div>

@@ -10,7 +10,7 @@
 
 .signupForm {
     margin: auto;
-    padding: 50px;
+    /* padding: 50px; */
 }
 
 /* Create a custom checkbox */
@@ -42,6 +42,6 @@ input[type=submit]:hover {
     color: red;
 }
 
-.centerForm {
+/* .centerForm {
     padding-left: 30%;
-}
+} */
