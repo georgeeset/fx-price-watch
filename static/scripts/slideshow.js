@@ -14,7 +14,7 @@ let i = 0
 
 setInterval(()=>{
   if(i == 3){
-    i = 0
+    i = 0;
   }
   else {i = i + 1};
   // console.log('i was run',i)

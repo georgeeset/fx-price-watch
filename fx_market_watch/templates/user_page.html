@@ -20,7 +20,7 @@
             {% if item.is_editable %}
                 <li class="cardItem">
                     <div class="card">
-                        <div>
+                        <div class="cardInfo">
                             <span>{{ item.currency_pair }} <i> Created: {{ item.time_created }}</i></span>
                             <span>
                                 {% if item.alert_medium.alert_type == 'telegram' %}
