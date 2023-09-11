@@ -211,3 +211,7 @@ footer {
   display: block;
   padding: 2%;
 }
+
+.warning {
+  color: red;
+}
