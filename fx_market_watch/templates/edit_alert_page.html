@@ -11,7 +11,7 @@
     {{ form.as_p }}
 
     <label for="medium">Alert Medium</label>
-    <select name="alert_medium" id="medium">
+    <select name="alert_medium" id="medium", class='form-control'>
         {% for choice in user_alert_medium%}
         <option value={{ choice.alert_type }}>{{ choice }}</option>
         {% endfor %}
