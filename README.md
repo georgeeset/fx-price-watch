@@ -1,9 +1,8 @@
 # fx-price-watch
 ---
-Alx portfolio project By:
-            George Esetevbe
-            Linkedin: [George-Esetevbe](https://www.linkedin.com/in/george-esetevbe-b5447280/)
-            Email: georgeperfect4u@gmail.com
+Alx portfolio project By: George Esetevbe\
+            Linkedin: [George-Esetevbe](https://www.linkedin.com/in/george-esetevbe-b5447280/)\
+            Email: georgeperfect4u@gmail.com\
 ---
 
 ## Forex and Crypto Price alert web application
