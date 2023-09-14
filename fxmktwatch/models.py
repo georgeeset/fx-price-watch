@@ -203,7 +203,7 @@ class Alerts(models.Model):
 
     @property
     def is_editable(self):
-        return datetime.utcnow().replace(tzinfo=pytz.UTC) < self.expiration.replace(tzinfo=pytz.UTC)
+        return datetime.utcnow().replace(tzinfo=pytz.UTC) < self.expiration.replace(tzinfo=pytz.UTC) and self.repeat_alarm > self.alertcount
 
     def __str__(self):
         return f'{__name__}, currency_pair => {self.currency_pair}, setup_condition => {self.setup_condition}'

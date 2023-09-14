@@ -219,7 +219,7 @@ def generate_code():
 def mail_code(email, code):
     send_mail(
         subject= 'Email Verification - FX market watch',
-        message=f"Your are receiving this message because you want to activate your email for price alert\n this is your verification code {code}",
+        message=f"Your are receiving this message because you want to activate your email for price alert\n this is your verification code: {code}",
         from_email="alert.pricewatch@gmail.com",
         recipient_list=[email],
         fail_silently=False,
@@ -279,8 +279,7 @@ def alert_medium(request):
                         medium.delete()
                         user_alert_medium = AlertMedium.objects.filter(user = this_user)
                 
-                ### Send telegram message and expect result
-                
+                # Send telegram message and expect result
                 alert_medium = AlertMedium()
                 alert_medium.alert_type = constants.t_elegram
                 alert_medium.alert_id = telegram_form.data.get(constants.telegram_id)
