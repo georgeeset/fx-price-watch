@@ -1,9 +1,10 @@
 # fx-price-watch
-
+---
 Alx portfolio project By:
             George Esetevbe
             Linkedin: [George-Esetevbe](https://www.linkedin.com/in/george-esetevbe-b5447280/)
             Email: georgeperfect4u@gmail.com
+---
 
 ## Forex and Crypto Price alert web application
 
@@ -34,8 +35,7 @@ The entire web application was build using Django Framework. The following featu
 - HtML, CSS and Javascipt for user interface using the jinja render feature of the Django framework.
 
 ### OTHER OPERATIONS
-- The primary aim of this web app is to interface between alert request database and the users.
+The primary aim of this web app is to interface between alert request database and the users.
 They will be able to place and manage alerts.
 - In order to achieve complete operations such as sending notifications and checking for currenty prices, some scripts have to run on schedule to fetch price data and query alerts table to see conditions that have been fufilled and send private messages accordingly.
 - The backend script project can be accessed at [fx_python_scripts](https://github.com/georgeeset/fx_python_scripts)
-
