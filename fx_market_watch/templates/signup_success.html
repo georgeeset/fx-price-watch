@@ -3,9 +3,12 @@
 {% block content %}
 
 {% include 'partials/_header.html' %}
-
-<p> Congratulations {{ first_name }} {{ last_name }} </p>
-<p> Your signup was successful </p>
-    <a href="/">Login</a>
-
+<div class='center'>
+<div>
+<p><h2> Congratulations</h2> <h3>{{ first_name }} {{ last_name }} </h3></p>
+<br><br>
+<p> Your signup was successful !</p>
+<a class="item" href="/">Login</a>
+</div>
+</div>
 {%endblock%}
