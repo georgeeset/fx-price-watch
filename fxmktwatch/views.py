@@ -67,6 +67,9 @@ def userPage(request):
     return render(request, 'user_page.html', {'first_name': this_user.username, 'alert_list': user_alerts})
 
 def record_alert(alert_form:AlertForm, this_user:UserInfo,  alert_method:AlertMedium, new_alert=None):
+    """
+    Transfer alert data from alert form into alert model
+    """
 
     if new_alert is None:
         new_alert = Alerts()
