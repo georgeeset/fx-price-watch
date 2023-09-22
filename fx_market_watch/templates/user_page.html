@@ -21,19 +21,23 @@
                 <li class="cardItem">
                     <div class="card">
                         <div class="cardInfo">
-                            <span>{{ item.currency_pair }} <i> Created: {{ item.time_created }}</i></span>
-                            <span>
+                            <div>
                                 {% if item.alert_medium.alert_type == 'telegram' %}
                                     <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
                                 {% elif item.alert_medium.alert_type == 'email' %}
                                 <img src="../static/styles/imgs/email-logo.png" alt="Email" height="35" width="35">
                                 {% endif %}
-                            </span>
-                            <br>
-                            <span> Triggered if {{ item.setup_condition }} @ {{ item.target_price }} </span><br>
-                            <span> Alert Set to Repeat every {{ item.timeframe }} candlestick timeframe {{ item.repeat_alarm }} time(s)</span><br>
-                            <span> Alert will be sent to your {{ item.alert_medium }}</span><br>
-                            <span> Expiration: {{ item.expiration }} </span><br>
+                            </div>
+
+                            <p><b>{{ item.currency_pair }}</b> <i> Created: {{ item.time_created }}</i></p>
+                            
+                            <div> <p>Condition: {{ item.setup_condition }}</p></div>
+                            <div><p>Setpoint: {{ item.target_price }}</p></div>
+
+                            <div><p> Alert Interval: {{ item.timeframe }} candle stick timeframe</p></div> 
+                            <div><p> Alert Medium: {{ item.alert_medium }}</p></div>
+                            <div><p> Expiration: {{ item.expiration }} </p></div>
+                            <div><p> Status: {{ item.alertcount }} / {{ item.repeat_alarm }}</p></div>
                         </div>
     
                     <div class='action'> {% if item.is_editable %}
