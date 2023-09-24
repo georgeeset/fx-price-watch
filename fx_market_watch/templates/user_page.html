@@ -10,15 +10,17 @@
     <h4> My Alerts </h4>
 </div>
 <div>
-    <div class="splitRow">
-        <div class="splitColumn">
-            <div class="cardInfo">
-                <h1>Active Alerts</h1>
-              </div>
+    <div class="allAlerts">
+
+        <div class="cardInfo">
+            <h1>Active Alerts</h1>
+          </div>
+          <hr>
+        <div class="alertsGroup">
+            
 
             {% for item in alert_list %}
             {% if item.is_active %}
-                <li class="cardItem" >
                     <div class="card">
                         <div class="cardInfo" id={{ item.id }} data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.setup_condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}" }' data-isExpired={{item.is_active}}> 
                             <div class="cardTitle">
@@ -48,20 +50,19 @@
                         </div>
 
                     </div>
-                </li>
             {% endif %}
         {% endfor %}
             
         </div>
-        <div class="splitColumn">
-          
-          <div>
+        <div class="cardInfo">
             <h1>History</h1>
           </div>
-          <ul>
+          <hr>
+        <div class="alertsGroup">
+          
+          
             {% for item in alert_list %}
                 {% if not item.is_active %}
-                <li class="cardItem">
                     <div class="card">
                         <div class="cardInfo" id={{ item.id }} data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.setup_condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}" }' data-isEditable={{item.is_editable}}>
                             <div class="cardTitle">
@@ -90,10 +91,8 @@
                         {% endif %}</div> {% endcomment %}
 
                     </div>
-                </li>
                 {% endif %}
             {% endfor %}
-        </ul>
         </div>
       </div>
 

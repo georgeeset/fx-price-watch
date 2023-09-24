@@ -202,3 +202,16 @@ footer {
 .warning {
   color: red;
 }
+
+.alertsGroup{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.allAlerts {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+}
