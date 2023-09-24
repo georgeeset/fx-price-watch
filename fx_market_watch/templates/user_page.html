@@ -17,10 +17,10 @@
               </div>
 
             {% for item in alert_list %}
-            {% if item.is_editable %}
-                <li class="cardItem">
+            {% if item.is_active %}
+                <li class="cardItem" >
                     <div class="card">
-                        <div class="cardInfo" id="alertCard">
+                        <div class="cardInfo" id={{ item.id }} data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.setup_condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}" }' data-isExpired={{item.is_active}}> 
                             <div class="cardTitle">
                                 <div class="mediumIcon">
                                     {% if item.alert_medium.alert_type == 'telegram' %}
@@ -41,7 +41,7 @@
                            
                         </div>
     
-                        <div class='cardAction'> {% if item.is_editable %}
+                        <div class='cardAction'> {% if item.is_active %}
                                 <a class="btnDefault" href="/user/edit-alert/{{ item.id }}" role="button">Edit</a>
                                 <a class="btnAlarm" href="/user/delete-alert/{{ item.id }}" role="button">Delete</a>
                             {% endif %}
@@ -60,22 +60,28 @@
           </div>
           <ul>
             {% for item in alert_list %}
-                {% if not item.is_editable %}
+                {% if not item.is_active %}
                 <li class="cardItem">
                     <div class="card">
-                        <div class="cardInfo">
-                            <span>{{ item.currency_pair }} <i> Created: {{ item.time_created }}</i></span>
-                            <span>
-                                {% if item.alert_medium.alert_type == 'telegram' %}
-                                    <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
-                                {% elif item.alert_medium.alert_type == 'email' %}
-                                <img src="../static/styles/imgs/email-logo.png" alt="Email" height="35" width="35">
-                                {% endif %}
-                            </span><br>
-                            <span> Triggered if {{ item.setup_condition }} @ {{ item.target_price }} </span><br>
-                            <span> Alert Set to Repeat every {{ item.timeframe }} candlestick timeframe {{ item.repeat_alarm }} time(s)</span><br>
-                            <span> Alert will be sent to your {{ item.alert_medium }}</span><br>
-                            <span> Expiration: {{ item.expiration }} </span><br>
+                        <div class="cardInfo" id={{ item.id }} data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.setup_condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}" }' data-isEditable={{item.is_editable}}>
+                            <div class="cardTitle">
+                                <div class="mediumIcon">
+                                    {% if item.alert_medium.alert_type == 'telegram' %}
+                                        <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
+                                    {% elif item.alert_medium.alert_type == 'email' %}
+                                    <img src="../static/styles/imgs/email-logo.png" alt="Email" height="35" width="35">
+                                    {% endif %}
+                                </div>
+
+                                <div class="pair"><h3>{{ item.currency_pair }}</h3> </div>
+                            </div>
+                            <hr>
+                            <div class="condition">{{ item.setup_condition }}</div>
+                            <hr>
+                            <div><p>Setpoint: <b>{{ item.target_price }}</b></p></div>
+
+                            <div><p>Interval: <b>{{ item.timeframe }} candle stick timeframe</b></p></div> 
+                           
                         </div>
     
                     {% comment %} <div class='action'> {% if item.is_editable %}
@@ -102,9 +108,12 @@
       <div class="modalContentBody">
         <p class="dialogTitle"><h2>Details</h2></p>
         <hr>
+        <div id="alertData">
+           
+        </div>
       </div>
     </div>
   
-  </div>
+</div>
 
 {%endblock%}

@@ -1,5 +1,9 @@
 const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
+const signupButton = document.getElementById("btnSignup");
+const loginButton = document.getElementById("btnLogin");
+
+
 var current_state="signup";
 
 const showLogin = () => {
@@ -16,8 +20,6 @@ const showSignup = () => {
     signupForm.style.display = 'block';
 }
 
-const loginButton = document.getElementById("btnLogin");
 loginButton.addEventListener('click', showLogin);
 
-const signupButton = document.getElementById("btnSignup");
 signupButton.addEventListener('click', showSignup);

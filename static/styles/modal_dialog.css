@@ -20,7 +20,9 @@
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    width: auto;
+    max-width: 500px;
+    min-width: 350px;
   }
   
   /* The Close Button */
@@ -37,3 +39,10 @@
     cursor: pointer;
   }
 
+.dataLine {
+  display: grid ;
+  grid-template-columns: 50% auto;
+}
+.titleColumn {
+  font-weight: bold;
+}

@@ -202,7 +202,7 @@ class Alerts(models.Model):
     note = models.CharField(null=False, max_length=100)
 
     @property
-    def is_editable(self):
+    def is_active(self):
         return datetime.utcnow().replace(tzinfo=pytz.UTC) < self.expiration.replace(tzinfo=pytz.UTC) and self.repeat_alarm > self.alertcount
 
     def __str__(self):
