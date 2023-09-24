@@ -25,12 +25,22 @@ function generateContent(mapData){
 
 alerts.forEach((card) => {
   card.addEventListener('click', () =>{
-    var dataItem = JSON.parse(card.dataset.item);
+    var dataItem = JSON.parse (card.dataset.item);
+    var isActive = card.dataset.isactive;
     // console.log(dataItem);
+    console.log(isActive);
     modalContent = generateContent(dataItem);
-    modalContent=modalContent.concat(`<div class="cardAction">
-    <a class="btnDefault" href="/user/edit-alert/${card.id}" role="button">Edit</a>
-    <a class="btnAlarm" href="/user/delete-alert/${card.id}"role="button">Delete</a></div>`)
+
+    modalContent=modalContent.concat(`<div class="cardAction">`);
+    if (isActive == 'True'){
+      modalContent = modalContent.concat(`
+      <a class="btnDefault" href="/user/edit-alert/${card.id}" role="button">Edit</a>
+      `);
+    }
+
+    modalContent = modalContent.concat(`
+    <a class="btnAlarm" href="/user/delete-alert/${card.id}"role="button">Delete</a></div>
+    `);
 
     document.getElementById("alertData").innerHTML = modalContent;
     modal.style.display= "block";

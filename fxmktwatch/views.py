@@ -62,7 +62,8 @@ def userPage(request):
     this_user = UserInfo.objects.get(username = request.user)
     user_alerts = Alerts.objects.filter(userid = this_user).order_by('-time_created')
     # print(user_alerts)
-    print(len(user_alerts))
+    # print(len(user_alerts))
+    # print(user_alerts[0].is_active)
 
     return render(request, 'user_page.html', {'first_name': this_user.username, 'alert_list': user_alerts})
 
