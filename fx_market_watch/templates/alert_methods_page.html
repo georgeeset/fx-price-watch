@@ -4,99 +4,95 @@
 
 {% include 'partials/_header.html' %}
 {% include 'partials/_navbar.html' %}
-<br><br>
 
-<h2>Alert Medium</h2>
+<div class="sectionTitle">
+    <h2 >  Alert Medium</h2>
+</div>
 <div>
-    <div class="splitRow">
-        <div class="splitColumn">
-            <div>
-          
-          {% for method in alert_medium %}
-
-          {% if method.alert_type == 'email' %}
-                <br>
-              <div class="methodItem">
-                <img src="../static/styles/imgs/email-logo.png" alt="Email" height="35" width="35">
-              
-                  <span>Email: {{method.alert_id }}</span>
+    <div class="alertMediumItems">
         
-                  {% if method.verified %}
-                      <span class="verified"> &check; </span>
-                  {% else %}
-                      <br>
-                      <div>
-                          <form method='post'>
-                              {% csrf_token %}
-                              {{ verification_form }}
-                              <input type='submit', name='verify_email' value='verify'>
-                          </form>
-                          <form method='post'>
-                              {% csrf_token %}
-                              <input type='submit', name='resend_email' value='Resend'>
-                          </form>
-                        </div>
-                  {% endif %}
+        <div class="methodItem">
+            <div class="mediumLogo">
+                <img src="../static/styles/imgs/email-logo.png" alt="Email" height="45" width="45">
             </div>
-                <br><br>
-          
-          {% elif method.alert_type == 'telegram' %}
-          <div>
-            <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
-          
-              <span>Telegram: {{method.alert_id }}</span>
-              {% if method.verified %}
-              <span class="verified"> &check; </span>
-              {% else %}
-                  <div>
-                      <p>Verify your TelegramAccount.<br>
-                         1) On your Telegram App, Search for @fx-market-watch-bot <br>
-                         2) Send your confirmation code <b> {{ method.verification_code }} </b> to the bot <br>
-                         3) Click verify button below to veify the confirmation code</p>
-                  </div>
-                  <form method='post'>
-                      {% csrf_token %}
-                      <input type='submit', name='verify_telegram' value='verify'>
-                  </form>
-              {% endif %}
-          </div>
-          {% endif %}
-      {% endfor %}
-        </div>
-        </div>
-  </div>
-          
-        </div>
-        <div class="splitColumn">
-          <div>
-            <h3>Add/Update Medium</h3>
-          </div>
-        `
-        <div>
-            <p>Update Email</p>
-            <form method='post'>
-                {% csrf_token %}
-                {{ email_form }}
-                <input type='submit', name='add_email' value='Update'>
-            </form>
-        </div>
-        <br><br>
-        <div>
-            <p>Update Telegram account</p>
-            <form method='post'>
-                {% csrf_token %}
-                {{ telegram_form}}
-                <input type='submit', name='add_telegram' value='Update'>
-            </form>
-        </div>`
+            {% for method in alert_medium %}
+                {% if method.alert_type == 'email' %}
+                    
 
+                    <span>Email: <b>{{method.alert_id }}</b></span>
+        
+                    {% if method.verified %}
+                        <span class="verified"> &check; </span>
+                    {% else %}
+                        <div>
+                            <form method='post'>
+                                {% csrf_token %}
+                                {{ verification_form }}
+                                <input type='submit', name='verify_email' value='verify'>
+                            </form>
+
+                            <form method='post'>
+                                {% csrf_token %}
+                                <input type='submit', name='resend_email' value='Resend'>
+                            </form>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+                <div class="editMediumForm">
+                    <p>Update Email</p>
+                    <form method='post'>
+                        {% csrf_token %}
+                        {{ email_form }}
+                        <input type='submit', name='add_email' value='Update'>
+                    </form>
+                </div>
         </div>
-      </div>
+                    
+            
+            <div class="methodItem">
+                <div class="mediumLogo">
+                    <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="55" width="55">
+                </div>
+                {% for method in alert_medium %}
+                    
+                    {% if method.alert_type == 'telegram' %}
 
-    
+                        <span>Telegram: <b>{{method.alert_id }}</b></span>
+                        {% if method.verified %}
+                            <span class="verified"> &check; </span>
+                        {% else %}
+                            <div>
+                                <p>Verify your TelegramAccount.</p>
+                                <ol class="telegramSteps">
+                                    <li> On your Telegram App, Search for @fx-market-watch-bot</li>
+                                    <li> Send your confirmation code <b> {{ method.verification_code }} </b> to the bot </li>
+                                    <li> Click verify button below to veify the confirmation code</li>
+                                </ol>
+                            </div>
+                            <form method='post'>
+                                {% csrf_token %}
+                                <input type='submit', name='verify_telegram' value='verify'>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
 
+                    <div class="editMediumForm">
+                        <p>Update Telegram</p>
+                        <form method='post'>
+                            {% csrf_token %}
+                            {{ telegram_form}}
+                            <input type='submit', name='add_telegram' value='Update'>
+                        </form>
+                    </div>
 
+                </div>
+            
+    </div>
 
-<br><br>
+</div>`
+
 
 {%endblock%}

@@ -63,7 +63,7 @@ def userPage(request):
     user_alerts = Alerts.objects.filter(userid = this_user).order_by('-time_created')
     # print(user_alerts)
     # print(len(user_alerts))
-    # print(user_alerts[0].is_active)
+    # print(user_alerts[0].to_dict())
 
     return render(request, 'user_page.html', {'first_name': this_user.username, 'alert_list': user_alerts})
 
@@ -99,7 +99,7 @@ def record_alert(alert_form:AlertForm, this_user:UserInfo,  alert_method:AlertMe
             new_alert.expiration = datetime.utcnow() + timedelta(days=(alert_form.cleaned_data['expiration_value'] * 30))
         else:
             HttpResponse('Somethin went wrong with expiraiton date')
-                
+       
         return new_alert
     else:
         print('Problem dey here')

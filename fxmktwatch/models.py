@@ -208,6 +208,18 @@ class Alerts(models.Model):
     def __str__(self):
         return f'{__name__}, currency_pair => {self.currency_pair}, setup_condition => {self.setup_condition}'
 
+    def to_dict(self):
+        my_dict = {"pair":  self.currency_pair,
+                   "setup_condition": self.setup_condition,
+                   "target_price": self.target_price ,
+                   "timeframe": self.timeframe,
+                   "repeat_alarm":  self.repeat_alarm,
+                   "alert_count": self.alertcount,
+                   "date_created": self.time_created ,
+                   "expiration_date": self.expiration ,
+                   "alertMedium": self.alert_medium.alert_type 
+                   }
+        return dict(my_dict)
 
 class EmailAlertForm(forms.Form):
     # medium = forms.models.CharField(max_length=50, required=True, widget=forms.Select(choices=MEDIUM_CHOICES))
@@ -238,7 +250,7 @@ class AlertForm(forms.Form):
     repeat_alarm = forms.IntegerField(required=True, min_value=1, initial=1, widget=forms.NumberInput(attrs={ 'class':'form-control'},))
     expiration_unit = forms.CharField(max_length=10, required=True, widget=forms.Select(choices=TIMEUNIT_CHOICES, attrs={ 'class':'form-control'}))
     expiration_value = forms.IntegerField(required=True, min_value=1, initial=1, widget=forms.NumberInput(attrs={ 'class':'form-control'}))
-    note = forms.CharField(required=True, max_length=100, min_length=10, widget=forms.Textarea(attrs={'size': '30', 'class':'form-control'}))
+    note = forms.CharField(required=True, max_length=100, min_length=10, widget=forms.Textarea(attrs={'size': '30', 'class':'form-note'}))
 
 
 class LoginForm(forms.Form):

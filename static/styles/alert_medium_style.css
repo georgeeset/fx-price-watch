@@ -1,0 +1,38 @@
+
+.alertMediumItems{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: auto;
+}
+
+.methodItem{
+    display: block;
+    background-color: rgb(245, 245, 245, 0.75);
+    border-radius: 5px;
+    width: 30%;
+    min-width: 400px;
+    min-height: 250px;
+    padding:10px;
+    height: min-content;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+
+.mediumLogo{
+    display: flex;
+    justify-content: end;
+}
+
+.telegramSteps > li{
+    padding-bottom: 8px;
+}
+
+.verified{
+    font-size: xx-large;
+    font-weight: 600;
+    color: green;
+  }

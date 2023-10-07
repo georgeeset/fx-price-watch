@@ -9,7 +9,15 @@
     background-color: rgb(245, 245, 245, 0.75);
     border-radius: 5px;
 }
+
+.cardItem {
+    list-style-type: none;
+}
   
+.card:hover {
+    background-color: whitesmoke;
+}
+
 .cardInfo {
     padding: 10px;
 }

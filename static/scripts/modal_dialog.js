@@ -10,7 +10,7 @@ var span = document.getElementsByClassName("close")[0];
 
 
 
-// Ger alert list items
+// Get alert list items
 var alerts = document.querySelectorAll("div.cardInfo");
 
 function generateContent(mapData){
@@ -27,8 +27,8 @@ alerts.forEach((card) => {
   card.addEventListener('click', () =>{
     var dataItem = JSON.parse (card.dataset.item);
     var isActive = card.dataset.isactive;
-    // console.log(dataItem);
-    console.log(isActive);
+    // console.log(card.dataset.item);
+    // console.log(isActive);
     modalContent = generateContent(dataItem);
 
     modalContent=modalContent.concat(`<div class="cardAction">`);

@@ -20,7 +20,6 @@ hr {
   margin-bottom: 5px;
 }
 
-
 .banner-head {
   background-color: whitesmoke;
   padding-top: 3%;
@@ -149,23 +148,9 @@ footer {
   background-color: orangered;
 }
 
-.cardItem {
-  list-style-type: none;
-}
-
-.card:hover {
-  background-color: whitesmoke;
-}
-
 .center {
   justify-content: center;
   display: flex;
-}
-
-.verified{
-  font-size: xx-large;
-  font-weight: 600;
-  color: green;
 }
 
 .signupContainer, .loginContainer {
@@ -214,4 +199,7 @@ footer {
   display: inline-block;
   width: 100%;
   padding: 20px;
+}
+.sectionTitle{
+  padding-left: 15%;
 }
