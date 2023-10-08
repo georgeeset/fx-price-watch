@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-.bana{
+.bana {
     width: 40%;
     height: auto;
 }
@@ -31,7 +31,7 @@
     clear: both;
 }
 
-.splitRow{
+.splitRow {
     justify-content: space-between;
     padding: 0px;
     /* padding: 5%; */
@@ -70,7 +70,7 @@
     text-align: center;
 }
 
-.fading-slideshow > li >img{
+.fading-slideshow > li >img {
     width: 75%;
 }
 
@@ -104,4 +104,3 @@
     }
    
   }
-

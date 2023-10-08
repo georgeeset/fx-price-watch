@@ -9,7 +9,7 @@
 }
 
 .form-note{
-    
+    resize: none;
 }
 
 .signupForm {
@@ -63,6 +63,7 @@ input[type=submit]:hover {
 .centerForm {
     justify-content: center;
     display: flex;
+    padding-bottom: 10px;
 }
 
 

@@ -14,44 +14,63 @@
 
         <div class="cardInfo">
             <h1>Active Alerts</h1>
-          </div>
-          <hr>
+        </div>
+        <hr>
         <div class="alertsGroup">
             
+            {% if not alert_list %}
+                <div>
+                    <div class="beginerCard">
+                        <h3>Your Alert List is empty !!!</h4>
+                        <hr>
+                        <ul class="instructions">
+                            <li>Get Started.</li>
+                            <li>Goto Alert Medium page <a href="/user/alert-methods"><b>Alert Medium</b></a></li>
+                            <li>Add any alert method of your choice and follow the steps to confirm registeration</li>
+                            <li>Goto Create Alert page to set your alert. <a href="/user/create-alert"><b>Crate Alert</b></a></li>
+                        </ul>
+                    </div>
 
-            {% for item in alert_list %}
-            {% if item.is_active %}
-                    <div class="card">
-                        <div class="cardInfo" id={{ item.id }} , data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.setup_condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}", "Note": "{{item.note}}" }' data-isActive='{{ item.is_active }}'>
-                            <div class="cardTitle">
-                                <div class="mediumIcon">
-                                    {% if item.alert_medium.alert_type == 'telegram' %}
-                                        <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
-                                    {% elif item.alert_medium.alert_type == 'email' %}
-                                    <img src="../static/styles/imgs/email-logo.png" alt="Email" height="35" width="35">
+                    <div class="candleImage">
+                        <img src="../static/styles/imgs/candlestick_label.png" alt="Telegram" height="300">
+                    </div>
+                    
+                </div>
+            {% else %}
+                {% for item in alert_list %}
+                    {% if item.is_active %}
+                            <div class="card">
+                                <div class="cardInfo" id={{ item.id }} , data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.setup_condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}", "Note": "{{item.note}}" }' data-isActive='{{ item.is_active }}'>
+                                    <div class="cardTitle">
+                                        <div class="mediumIcon">
+                                            {% if item.alert_medium.alert_type == 'telegram' %}
+                                                <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
+                                            {% elif item.alert_medium.alert_type == 'email' %}
+                                            <img src="../static/styles/imgs/email-logo.png" alt="Email" height="35" width="35">
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="pair"><h3>{{ item.currency_pair }}</h3> </div>
+                                    </div>
+                                    <hr>
+                                    <div class="condition">{{ item.setup_condition }}</div>
+                                    <hr>
+                                    <div><p>Setpoint: <b>{{ item.target_price }}</b></p></div>
+
+                                    <div><p>Interval: <b>{{ item.timeframe }} candle stick timeframe</b></p></div> 
+                                
+                                </div>
+            
+                                <div class='cardAction'> {% if item.is_active %}
+                                        <a class="btnDefault" href="/user/edit-alert/{{ item.id }}" role="button">Edit</a>
+                                        <a class="btnAlarm" href="/user/delete-alert/{{ item.id }}" role="button">Delete</a>
                                     {% endif %}
                                 </div>
 
-                                <div class="pair"><h3>{{ item.currency_pair }}</h3> </div>
                             </div>
-                            <hr>
-                            <div class="condition">{{ item.setup_condition }}</div>
-                            <hr>
-                            <div><p>Setpoint: <b>{{ item.target_price }}</b></p></div>
-
-                            <div><p>Interval: <b>{{ item.timeframe }} candle stick timeframe</b></p></div> 
-                           
-                        </div>
-    
-                        <div class='cardAction'> {% if item.is_active %}
-                                <a class="btnDefault" href="/user/edit-alert/{{ item.id }}" role="button">Edit</a>
-                                <a class="btnAlarm" href="/user/delete-alert/{{ item.id }}" role="button">Delete</a>
-                            {% endif %}
-                        </div>
-
-                    </div>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
-        {% endfor %}
             
         </div>
         <div class="cardInfo">

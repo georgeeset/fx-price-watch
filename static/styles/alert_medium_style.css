@@ -36,3 +36,14 @@
     font-weight: 600;
     color: green;
   }
+
+.horizontalButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.resendButton {
+    align-self: flex-end;
+}

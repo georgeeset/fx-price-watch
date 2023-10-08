@@ -64,12 +64,7 @@ class SignupForm(UserCreationForm):
             'class': 'checkBoxes',
         }),
         required=True,
-        choices=[
-            ('Forex','Forex' ),
-            ('Crypto', 'Crypto'),
-            ('Deriv', 'Deriv'),
-            ('Metals', 'Metals'),
-        ],
+        choices=constants.INTERESTSCHOICES,
     )
 
     class Meta:
@@ -87,80 +82,6 @@ class UserInfo(models.Model):
     def __str__(self):
         return f'first name : {self.firstname} \n username : {self.username}'
 
-
-CURRENCY_CHOICES = [
-    ('EURUSD', 'EUR/USD'),
-    ('EURJPY', 'EUR/JPY'),
-    ('USDJPY', 'USD/JPY'),
-    ('GBPUSD', 'GBP/USD'),
-    ('AUDUSD', 'AUD/USD'),
-    ('USDCAD', 'USD/CAD'),
-    ('USDCHF', 'USD/CHF'),
-    ('CADCHF', 'CAD/CHF'),
-    ('USDCNY', 'USD/CNY'),
-    ('USDHKD', 'USD/HKD'),
-    ('EURGBP', 'EUR/GBP'),
-
-    # {'id':'frxAUDUSD', 'table': 'AUDUSD'},
-    # {'id':'frxEURGBP', 'table': 'EURGBP'},
-    # {'id':'frxEURJPY', 'table': 'EURJPY'},
-    # {'id':'frxEURUSD', 'table': 'EURUSD'},
-    # {'id':'frxGBPUSD', 'table': 'GBPUSD'},
-    # {'id':'frxUSDCAD', 'table': 'USDCAD'},
-    # {'id':'frxUSDCHF', 'table': 'USDCHF'},
-    # {'id':'frxUSDJPY', 'table': 'USDJPY'},
-    ('frxXAUUSD', 'GoldUSD'),
-    ( 'Volatility_50_Index', 'Volatility 50 Index'),
-    ( 'Volatility_75_Index', 'Volatility 75 Index'),
-    ( 'Volatility_100_Index', 'Volatility 100 Index'),
-    ( 'Step_Index', 'Step Index'),
-    ( 'Boom_500_Index', 'Boom 500 Index'),
-    ( 'Boom_1000_Index', 'Boom 1000 Index'),
-    ( 'Crash_500_Index', 'Crash 500 Index'),
-    ( 'Crash_1000_Index', 'Crash 1000 Index'),
-    ( 'Jump_50_Index', 'Jump 50 Index'),
-    ( 'Jump_75_Index', 'Jump 75 Index'),
-    ( 'Jump_100_Index','Jump 100 Index'),
-    # ('BTC/USDT', 'BTC/USDT'),
-    # ('ETH/USDT', 'ETH/USDT'),
-]
-
-CONDITION_CHOICES = [
-    ('CLOSING PRICE IS GREATER THAN SETPOINT','CLOSING PRICE IS GREATER THAN SETPOINT'),
-    ('CLOSING PRICE IS LESS THAN SETPOINT', 'CLOSING PRICE IS LESS THAN SETPOINT'),
-    ('OPENING PRICE IS GREATER THAN SETPOINT', 'OPENING PRICE IS GREATER THAN SETPOINT'),
-    ('OPENING PRICE IS LESS THAN SETPOINT', 'OPENING PRICE IS LESS THAN SETPOINT'),
-    ('HIGHEST PRICE IS GREATER THAN SETPOINT', 'HIGHEST PRICE IS GREATER THAN SETPOINT'),
-    ('HIGHEST PRICE IS LESS THAN SETPOINT', 'HIGHEST PRICE IS LESS THAN SETPOINT'),
-    ('LOWEST PRICE IS GREATER THAN SETPOINT', 'LOWEST PRICE IS GREATER THAN SETPOINT'),
-    ('LOWEST PRICE IS LESS THAN SETPOINT', 'LOWEST PRICE IS LESS THAN SETPOINT'),
-]
-
-TIMEFRAME_CHOICES = [
-    ('H1', 'H1'),
-    ('H4', 'H4'),
-    ('D1', 'D1'),
-    ('W1', 'W1'),
-    ('M1', 'M1'),
-]
-
-TIMEUNIT_CHOICES = [
-    (constants.hours, constants.hours),
-    (constants.days, constants.days),
-    (constants.months, constants.months),
-]
-
-MEDIUM_CHOICES = [
-    (constants.telegram, constants.telegram),
-    (constants.email, constants.email),
-    # add more as you progress
-]
-
-STATUS_CHOICES = [
-    ('OPEN', 'OPEN'),
-    ('CLOSE', 'CLOSE'),
-    ('EXPIRED', 'EXPIRED'),
-]
 
 class AlertMedium(models.Model):
     alert_type = models.CharField(max_length=20)
@@ -241,14 +162,14 @@ class CodeVerificationForm(forms.Form):
 
 class AlertForm(forms.Form):
 
-    currency_pair = forms.CharField(max_length=30, required=True, widget=forms.Select(choices=CURRENCY_CHOICES, attrs={ 'class':'form-control'}) )
-    setup_condition = forms.CharField(max_length=50, required=True, widget=forms.Select(choices=CONDITION_CHOICES, attrs={ 'class':'form-control'}))
+    currency_pair = forms.CharField(max_length=30, required=True, widget=forms.Select(choices=constants.CURRENCY_CHOICES, attrs={ 'class':'form-control'}) )
+    setup_condition = forms.CharField(max_length=50, required=True, widget=forms.Select(choices=constants.CONDITION_CHOICES, attrs={ 'class':'form-control'}))
 
     target_price = forms.FloatField(required=True, initial=0.001, widget=forms.NumberInput(attrs={'id': 'float_form', 'class':'form-control'}))
 
-    timeframe = forms.CharField(max_length=4, required=True, widget=forms.Select(choices=TIMEFRAME_CHOICES, attrs={ 'class':'form-control'}))
+    timeframe = forms.CharField(max_length=4, required=True, widget=forms.Select(choices=constants.TIMEFRAME_CHOICES, attrs={ 'class':'form-control'}))
     repeat_alarm = forms.IntegerField(required=True, min_value=1, initial=1, widget=forms.NumberInput(attrs={ 'class':'form-control'},))
-    expiration_unit = forms.CharField(max_length=10, required=True, widget=forms.Select(choices=TIMEUNIT_CHOICES, attrs={ 'class':'form-control'}))
+    expiration_unit = forms.CharField(max_length=10, required=True, widget=forms.Select(choices=constants.TIMEUNIT_CHOICES, attrs={ 'class':'form-control'}))
     expiration_value = forms.IntegerField(required=True, min_value=1, initial=1, widget=forms.NumberInput(attrs={ 'class':'form-control'}))
     note = forms.CharField(required=True, max_length=100, min_length=10, widget=forms.Textarea(attrs={'size': '30', 'class':'form-note'}))
 

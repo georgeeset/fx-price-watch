@@ -24,18 +24,22 @@
                     {% if method.verified %}
                         <span class="verified"> &check; </span>
                     {% else %}
-                        <div>
-                            <form method='post'>
-                                {% csrf_token %}
-                                {{ verification_form }}
-                                <input type='submit', name='verify_email' value='verify'>
-                            </form>
-
-                            <form method='post'>
-                                {% csrf_token %}
-                                <input type='submit', name='resend_email' value='Resend'>
-                            </form>
+                        <div class="horizontalButtons">
+                            <div>
+                                <form method='post'>
+                                    {% csrf_token %}
+                                    {{ verification_form }}
+                                    <input type='submit', name='verify_email' value='verify'>
+                                </form>
+                            </div>
+                            <div class="resendButton">
+                                <form method='post'>
+                                    {% csrf_token %}
+                                    <input type='submit', name='resend_email' value='Resend'>
+                                </form>
+                            </div>
                         </div>
+                        <hr>
                     {% endif %}
                 {% endif %}
             {% endfor %}
@@ -93,6 +97,5 @@
     </div>
 
 </div>`
-
 
 {%endblock%}

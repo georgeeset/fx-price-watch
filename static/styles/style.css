@@ -21,6 +21,9 @@ hr {
 }
 
 .banner-head {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
   background-color: whitesmoke;
   padding-top: 3%;
   padding-bottom:2%
@@ -36,7 +39,7 @@ hr {
 .banner {
   font-size: 58px;
   font-weight: bold;
-  text-align: center;
+  /* text-align: center; */
   text-shadow: 2px 2px #000000;
   background-image: linear-gradient(to right, #FFA500, #FFA500 50%, #800080 50%, #800080);
   -webkit-background-clip: text;
@@ -172,7 +175,7 @@ footer {
   display: none
 }
 
-.imageSlide{
+.imageSlide {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -188,18 +191,44 @@ footer {
   color: red;
 }
 
-.alertsGroup{
+.alertsGroup {
   display: flex;
   flex-direction: row;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .allAlerts {
   display: inline-block;
   width: 100%;
   padding: 20px;
 }
-.sectionTitle{
+
+.sectionTitle {
   padding-left: 15%;
+}
+
+.beginerCard {
+  background-color: rgba(245, 245, 245, 0.8);
+  padding:10px;
+}
+
+.instructions {
+  list-style:square;
+}
+
+.instructions > li {
+  padding-bottom: 5px;
+}
+
+.candleImage{
+  margin-top: 20px;
+  background-color: white;
+  padding: 10px;
+}
+
+.beginerCard, .candleImage {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
 }
