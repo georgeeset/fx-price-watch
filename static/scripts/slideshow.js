@@ -1,22 +1,13 @@
-const indexSlide = document.getElementById('slideShow')
 
-const UPDATE_TIME_INTERVAL = 6000
+window.addEventListener("DOMContentLoaded", (e) => {
 
-//  Enter URLs of your own custom images
-const imagesArray = [
-  "/static/styles/imgs/slide1.png",
-  "/static/styles/imgs/slide2.png",
-  "/static/styles/imgs/slide3.png",
-  "/static/styles/imgs/slide4.png",
-]
+  // Original JavaScript code by Chirp Internet: www.chirpinternet.eu
+  // Please acknowledge use of this code by including this header.
 
-let i = 0
+  document.querySelectorAll(".fading-slideshow > li").forEach((slide) => {
+    slide.addEventListener("animationend", (item) => {
+      item.target.parentNode.appendChild(item.target);
+    });
+  });
 
-setInterval(()=>{
-  if(i == 3){
-    i = 0;
-  }
-  else {i = i + 1};
-  // console.log('i was run',i)
-  indexSlide.src = imagesArray[i]
-},UPDATE_TIME_INTERVAL)
+});

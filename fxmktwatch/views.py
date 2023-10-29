@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 import random, math
 from fxmktwatch.utils import constants, services
 from django.http import Http404
+from os import environ
 
 # Create your views here.
 
@@ -21,30 +22,30 @@ def home(request):
         if signup_form.is_valid():
             # print(signup_form.cleaned_data.get('first_name'))
             new_user = UserInfo()
-            new_user.firstname = signup_form.cleaned_data.get('first_name')
-            new_user.lastname = signup_form.cleaned_data.get('last_name')
-            new_user.username = signup_form.cleaned_data.get('username')
-            new_user.interest = ','.join(signup_form.cleaned_data.get('interests'))
+            new_user.firstname = signup_form.cleaned_data.get(constants.first_name)
+            new_user.lastname = signup_form.cleaned_data.get(constants.last_name)
+            new_user.username = signup_form.cleaned_data.get(constants.username)
+            new_user.interest = ','.join(signup_form.cleaned_data.get(constants.interests))
             new_user.save()
             signup_form.save()
-            interests = signup_form.cleaned_data.get('interests')
+            interests = signup_form.cleaned_data.get(constants.interests)
             print(interests)
             return render(request, 'signup_success.html',
-                          {'first_name': signup_form.cleaned_data.get('first_name'),
-                           'last_name': signup_form.cleaned_data.get('last_name')}
+                          {constants.first_name: signup_form.cleaned_data.get(constants.first_name),
+                           constants.last_name: signup_form.cleaned_data.get(constants.last_name)}
                            )
        
     elif request.method == 'POST' and 'login' in request.POST:
         login_form = LoginForm(request.POST)
-        username = login_form.data.get('username')
-        password = login_form.data.get('password')
+        username = login_form.data.get(constants.username)
+        password = login_form.data.get(constants.password)
 
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
             return redirect('/user')
         else:
-            login_form.add_error('username', 'Invalid Username or Password')
+            login_form.add_error(constants.username, constants.Invalid_Username_or_Password)
 
         # print(f'{username} . {password}')
 
@@ -60,9 +61,10 @@ def userPage(request):
 
 
     this_user = UserInfo.objects.get(username = request.user)
-    user_alerts = Alerts.objects.filter(userid = this_user).order_by('-time_created')
+    user_alerts = Alerts.objects.filter(userid = this_user).order_by(constants.time_created_neg)
     # print(user_alerts)
-    print(len(user_alerts))
+    # print(len(user_alerts))
+    # print(user_alerts[0].to_dict())
 
     return render(request, 'user_page.html', {'first_name': this_user.username, 'alert_list': user_alerts})
 
@@ -78,27 +80,27 @@ def record_alert(alert_form:AlertForm, this_user:UserInfo,  alert_method:AlertMe
         # print(alertForm.data)
         # new_alert = Alerts()
 
-        new_alert.currency_pair = alert_form.cleaned_data['currency_pair']
-        new_alert.setup_condition = alert_form.cleaned_data['setup_condition']
-        new_alert.timeframe = alert_form.data['timeframe']
-        new_alert.repeat_alarm = alert_form.data['repeat_alarm']
-        new_alert.expiration_unit = alert_form.data['expiration_unit']
-        new_alert.expiration_value = alert_form.data['expiration_value']
-        new_alert.target_price = alert_form.data['target_price']
+        new_alert.currency_pair = alert_form.cleaned_data[constants.currency_pair]
+        new_alert.setup_condition = alert_form.cleaned_data[constants.setup_condition]
+        new_alert.timeframe = alert_form.data[constants.timeframe]
+        new_alert.repeat_alarm = alert_form.data[constants.repeat_alarm]
+        new_alert.expiration_unit = alert_form.data[constants.expiration_unit]
+        new_alert.expiration_value = alert_form.data[constants.expiration_value]
+        new_alert.target_price = alert_form.data[constants.target_price]
         new_alert.userid = this_user
         # new_alert.expiration = datetime.now()
-        new_alert.note = alert_form.data['note']
+        new_alert.note = alert_form.data[constants.note]
         new_alert.alert_medium = alert_method
 
-        if alert_form.cleaned_data['expiration_unit'] == constants.hours:
-            new_alert.expiration = datetime.utcnow() + timedelta(hours=alert_form.cleaned_data['expiration_value'])
-        elif alert_form.cleaned_data['expiration_unit'] == constants.days:
-            new_alert.expiration = datetime.utcnow() + timedelta(days=alert_form.cleaned_data['expiration_value'])
-        elif alert_form.cleaned_data['expiration_unit'] == constants.months:
-            new_alert.expiration = datetime.utcnow() + timedelta(days=(alert_form.cleaned_data['expiration_value'] * 30))
+        if alert_form.cleaned_data[constants.expiration_unit] == constants.hours:
+            new_alert.expiration = datetime.utcnow() + timedelta(hours=alert_form.cleaned_data[constants.expiration_value])
+        elif alert_form.cleaned_data[constants.expiration_unit] == constants.days:
+            new_alert.expiration = datetime.utcnow() + timedelta(days=alert_form.cleaned_data[constants.expiration_value])
+        elif alert_form.cleaned_data[constants.expiration_unit] == constants.months:
+            new_alert.expiration = datetime.utcnow() + timedelta(days=(alert_form.cleaned_data[constants.expiration_value] * 30))
         else:
             HttpResponse('Somethin went wrong with expiraiton date')
-                
+       
         return new_alert
     else:
         print('Problem dey here')
@@ -146,7 +148,6 @@ def add_alert(request):
     return render(request, 'create_alert_page.html',
                   {'first_name': request.user.get_username, 'form': alertForm, 'user_alert_medium': user_alert_medium})
 
-
 def edit_alert(request, id):
 
     if not request.user.is_authenticated:
@@ -161,14 +162,14 @@ def edit_alert(request, id):
     if request.method == 'GET':
 
         init_data = {
-            'currency_pair' : to_edit.currency_pair,
-            'setup_condition' : to_edit.setup_condition,
-            'timeframe' : to_edit.timeframe,
-            'repeat_alarm' : to_edit.repeat_alarm,
-            'expiration_unit' : to_edit.expiration,
-            'expiration_value' : to_edit.expiration_value,
-            'target_price' : to_edit.target_price,
-            'note' : to_edit.note,
+            constants.currency_pair : to_edit.currency_pair,
+            constants.setup_condition : to_edit.setup_condition,
+            constants.timeframe : to_edit.timeframe,
+            constants.repeat_alarm : to_edit.repeat_alarm,
+            constants.expiration_unit : to_edit.expiration,
+            constants.expiration_value : to_edit.expiration_value,
+            constants.target_price : to_edit.target_price,
+            constants.note : to_edit.note,
         }
         
         edit_form = AlertForm(request.POST or None, initial=init_data)
@@ -199,7 +200,7 @@ def delete_alert(request, id):
     this_user = get_object_or_404(UserInfo, username = request.user)
     to_delete = get_object_or_404(Alerts ,id=id)
 
-    if to_delete.userid != this_user or not to_delete.is_editable:
+    if to_delete.userid != this_user: #or not to_delete.is_editable:
         return Http404
 
     if request.method == 'GET':
@@ -223,10 +224,11 @@ def mail_code(email, code):
     send_mail(
         subject= 'Email Verification - FX market watch',
         message=f"Your are receiving this message because you want to activate your email for price alert\n this is your verification code: {code}",
-        from_email="alert.pricewatch@gmail.com",
+        from_email=environ.get('FX_EMAIL'),
         recipient_list=[email],
         fail_silently=False,
         )
+
 
 def alert_medium(request):
     this_user = get_object_or_404(UserInfo, username = request.user)
@@ -361,9 +363,6 @@ def alert_medium(request):
                         #     verification_form.add_error ('code', 'Wrong code. please try again')
 
     return render(request, 'alert_methods_page.html', {'email_form': email_form, 'telegram_form': telegram_form, 'verification_form': verification_form, 'alert_medium': user_alert_medium})
-
-    
-
 
 def logout_user(request):
     if request.method == 'GET':

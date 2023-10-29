@@ -9,9 +9,16 @@
 
   <div class="splitRow">
     <div class="splitColumn">
-      <img class="imageSlide" id="slideShow" src="/static/styles/imgs/slide1.png" alt="slideshow">
+      <div class="squ">
+      <ul class="fading-slideshow" >
+        <li><img src="/static/styles/imgs/slide1.png" alt=""></li>
+        <li><img src="/static/styles/imgs/slide2.png" alt=""></li>
+        <li><img src="/static/styles/imgs/slide3.png" alt=""></li>
+        <li><img src="/static/styles/imgs/slide4.png" alt=""></li>
+      </ul>
     </div>
-    <div class="splitColumn">
+    </div>
+    <div class="splitColumn bordered" >
       <div id="login-form" class="loginContainer">
         <div>
           <h3>Login</h3>
@@ -41,15 +48,13 @@
             {{ signupform.as_p }}
             <div class="signupAction">
               <input type='submit', name='signup' value='Register'>
-              <button class="flatButton" type="button" id="btnLogin" >I have an Account Login!</button>
+              <button class="flatButton" type="button" id="btnLogin" >Login</button>
             </div>
            </form>
-          
          </div>
 
         </div>
 
     </div>
   </div>
-
 {%endblock%}
