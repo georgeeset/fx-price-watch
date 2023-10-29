@@ -16,11 +16,11 @@
   
 .card:hover {
     background-color: whitesmoke;
+    cursor: pointer;
 }
 
 .cardInfo {
     padding: 10px;
-    padding-left: 13%;
 }
 
 .cardTitle {
@@ -34,4 +34,4 @@
     background-color: rgb(0, 0, 0, 0.5);
     padding: 10px;
     justify-content: space-between;
-  }
+}

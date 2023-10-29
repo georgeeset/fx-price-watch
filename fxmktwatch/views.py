@@ -55,6 +55,7 @@ def home(request):
 
     return render(request, 'index.html', {'signupform': signup_form, 'loginform': login_form, 'login_error_message': login_message})   
 
+
 def userPage(request):
     if not request.user.is_authenticated:
          return redirect('/')
