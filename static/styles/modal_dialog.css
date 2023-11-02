@@ -44,6 +44,16 @@
   grid-template-columns: 50% auto;
   font-size: large;
 }
+
+
 .titleColumn {
   font-weight: bold;
+}
+
+@media screen and (max-width: 400px) {
+  
+  .dataLine{
+    font-size: small;
+  }
+ 
 }

@@ -17,7 +17,7 @@ function generateContent(mapData){
   // console.log(mapData);
   data = "";
   for (k in mapData){
-    data = data.concat(`<div class="dataLine"><p class="titleColumn"> ${k.replace('_', ' ').toUpperCase()} :</p> <p>${mapData[k]}</p></div><hr>`);
+    data = data.concat(`<div class="dataLine"><p class="titleColumn"> ${k.replace('_', ' ').toUpperCase()}:</p> <p>${mapData[k]}</p></div><hr>`);
   }
   // console.log(data);
   return data;
