@@ -22,7 +22,7 @@ hr {
 
 .banner-head {
   display: flex;
-  gap: 30px;
+  /* gap: 10%; */
   justify-content: center;
   background-color: whitesmoke;
   padding-top: 3%;
@@ -33,11 +33,11 @@ hr {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-style: italic;
   text-align: center;
-  font-size: medium;
+  font-size: 24px;
 }
 
 .banner {
-  font-size: 58px;
+  font-size: 40px;
   font-weight: bold;
   /* text-align: center; */
   text-shadow: 2px 2px #000000;
@@ -89,8 +89,6 @@ hr {
   float: left;
 }
 
-
-
 .iconItem {
   display: inline;
   margin-left: 20px;
@@ -123,6 +121,7 @@ footer {
 
 .subTitle{
   padding-left: 10%;
+  overflow: hidden;
 }
 
 .btnDefault {
@@ -226,6 +225,12 @@ footer {
   margin-top: 20px;
   background-color: white;
   padding: 10px;
+  text-align: center;
+}
+
+.candleImage > img{
+  width: 45vw;
+  min-width: 120px;
 }
 
 .beginerCard, .candleImage {

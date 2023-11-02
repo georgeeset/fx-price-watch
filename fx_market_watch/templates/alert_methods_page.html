@@ -6,7 +6,7 @@
 {% include 'partials/_navbar.html' %}
 
 <div class="sectionTitle">
-    <h2 >  Alert Medium</h2>
+    <h3 >  Alert Medium</h3>
 </div>
 <div>
     <div class="alertMediumItems">
@@ -19,7 +19,7 @@
                 {% if method.alert_type == 'email' %}
                     
 
-                    <span>Email: <b>{{method.alert_id }}</b></span>
+                    <span class="email">Email: <b>{{method.alert_id }}</b></span>
         
                     {% if method.verified %}
                         <span class="verified"> &check; </span>

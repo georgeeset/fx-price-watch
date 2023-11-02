@@ -22,7 +22,7 @@
     border: 1px solid #888;
     width: auto;
     max-width: 500px;
-    min-width: 350px;
+    /* min-width: 350px; */
   }
   
   /* The Close Button */
@@ -42,6 +42,7 @@
 .dataLine {
   display: grid ;
   grid-template-columns: 50% auto;
+  font-size: large;
 }
 .titleColumn {
   font-weight: bold;

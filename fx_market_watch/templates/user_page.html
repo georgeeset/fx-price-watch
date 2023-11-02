@@ -13,11 +13,11 @@
     <div class="allAlerts">
 
         <div class="cardInfo">
-            <h1>Active Alerts</h1>
+            <h3>Active Alerts</h3>
         </div>
         <hr>
         <div class="alertsGroup">
-            
+
             {% if not alert_list %}
                 <div>
                     <div class="beginerCard">
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="candleImage">
-                        <img src="../static/styles/imgs/candlestick_label.png" alt="Telegram" height="300">
+                        <img src="../static/styles/imgs/candlestick_label.png" alt="Telegram">
                     </div>
                     
                 </div>
@@ -50,7 +50,7 @@
                                             {% endif %}
                                         </div>
 
-                                        <div class="pair"><h3>{{ item.currency_pair }}</h3> </div>
+                                        <div class="pair"><b>{{ item.currency_pair }}</b> </div>
                                     </div>
                                     <hr>
                                     <div class="condition">{{ item.setup_condition }}</div>
@@ -74,7 +74,7 @@
             
         </div>
         <div class="cardInfo">
-            <h1>History</h1>
+            <h3>History</h3>
           </div>
           <hr>
         <div class="alertsGroup">
