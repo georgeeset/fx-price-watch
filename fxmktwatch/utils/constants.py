@@ -78,6 +78,18 @@ CURRENCY_CHOICES = [
     ( 'Jump_100_Index','Jump 100 Index'),
     # ('BTC/USDT', 'BTC/USDT'),
     # ('ETH/USDT', 'ETH/USDT'),
+
+    ('ETHUSDT', 'ETH/USD'),
+    ('BTCUSDT', 'BTC/USD'),
+    ('SOLUSDT', 'SOL/USD'),
+    ('FTTUSDT', 'FTT/USD'),
+    ('XRPUSDT', 'XRP/USD'),
+    ('BNBUSDT', 'BNB/USD'),
+    ('LINKUSDT', 'LINK/USD'),
+    ('FTTUSDT', 'FTT/USD'),
+    ('AVAXUSDT', 'AVAX/USD'),
+    ('TIAUSDT', 'TIA/USD'),
+    ('AVAXUSDT', 'AVAX/USD')
 ]
 
 INTERESTSCHOICES = [
