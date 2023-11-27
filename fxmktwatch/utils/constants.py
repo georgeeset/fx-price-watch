@@ -45,6 +45,8 @@ CONDITION_CHOICES = [
 
 CURRENCY_CHOICES = [
     ('EURUSD', 'EUR/USD'),
+    ('AUDJPY', 'AUD/JPY'),
+    ('EURCHF', 'EUR/CHF'),
     ('EURJPY', 'EUR/JPY'),
     ('USDJPY', 'USD/JPY'),
     ('GBPUSD', 'GBP/USD'),
@@ -52,7 +54,7 @@ CURRENCY_CHOICES = [
     ('USDCAD', 'USD/CAD'),
     ('USDCHF', 'USD/CHF'),
     ('CADCHF', 'CAD/CHF'),
-    ('USDCNY', 'USD/CNY'),
+    ('CHFJPY', 'CHF/JPY'),
     ('USDHKD', 'USD/HKD'),
     ('EURGBP', 'EUR/GBP'),
 
