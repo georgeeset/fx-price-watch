@@ -66,7 +66,11 @@ CURRENCY_CHOICES = [
     # {'id':'frxUSDCAD', 'table': 'USDCAD'},
     # {'id':'frxUSDCHF', 'table': 'USDCHF'},
     # {'id':'frxUSDJPY', 'table': 'USDJPY'},
-    ('frxXAUUSD', 'GoldUSD'),
+
+    # must switch this to avioid swapped currency pair name
+    #('frxXAUUSD', 'GoldUSD') is the original
+
+    ('GoldUSD', 'frxXAUUSD'),
     ( 'Volatility_50_Index', 'Volatility 50 Index'),
     ( 'Volatility_75_Index', 'Volatility 75 Index'),
     ( 'Volatility_100_Index', 'Volatility 100 Index'),
@@ -78,6 +82,7 @@ CURRENCY_CHOICES = [
     ( 'Jump_50_Index', 'Jump 50 Index'),
     ( 'Jump_75_Index', 'Jump 75 Index'),
     ( 'Jump_100_Index','Jump 100 Index'),
+
     # ('BTC/USDT', 'BTC/USDT'),
     # ('ETH/USDT', 'ETH/USDT'),
 
