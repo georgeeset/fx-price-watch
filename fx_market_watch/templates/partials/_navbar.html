@@ -1,10 +1,31 @@
-
-
-<div  class="navbar">
+{% block content %}
+<div class="navbar">
   <ul class="menu">
-      <li ><a class="item" href="/user"> My Alerts</a></li>
-      <li ><a class="item" href="/user/alert-methods">Alert Medium</a></li>
-      <li><a class="item" href="/user/create-alert">Create Alert</a></li>
-      <li class="hide"><a class="item" href="/logout">Logout</a></li>
+    <li>
+      <a class="item" href="/user">
+        <div {% if request.path=='/user/' %} class="current" {% endif %}>
+          My Alerts
+        </div>
+      </a>
+    </li>
+
+    <li><a class="item" href="/user/alert-methods">
+        <div {% if request.path=='/user/alert-methods' %} class="current" {% endif %}>
+          Alert Medium
+        </div>
+      </a>
+    </li>
+
+    <li><a class="item" href="/user/create-alert">
+        <div {% if request.path=='/user/create-alert' %} class="current" {% endif %}>
+          Create Alert
+        </div>
+      </a>
+    </li>
+    
+    <li class="hide">
+      <a class="item" href="/logout/">Logout</a>
+    </li>
   </ul>
 </div>
+{% endblock %}

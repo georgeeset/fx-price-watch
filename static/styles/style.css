@@ -66,7 +66,7 @@ hr {
   top: 0;
 }
 
-.item {
+.item{
   width: auto;
   padding: 10px;
   color: white;
@@ -76,7 +76,14 @@ hr {
   margin-right: 1%;
 }
 
-.item:hover {
+.current{
+  color: rgb(100, 253, 146);
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.item:hover{
   background-color: rgb(77, 34, 41);
 }
 
@@ -84,7 +91,7 @@ hr {
   float: right;
 }
 
-.menu .item {
+.menu .item{
   list-style: none;
   float: left;
 }
