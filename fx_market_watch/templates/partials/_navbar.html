@@ -1,31 +1,19 @@
-{% block content %}
-<div class="navbar">
-  <ul class="menu">
-    <li>
-      <a class="item" href="/user">
-        <div {% if request.path=='/user/' %} class="current" {% endif %}>
-          My Alerts
-        </div>
-      </a>
-    </li>
+<div class="topnav" id="myTopnav">
+  <a href="/user" {% if request.path == '/user/' %} class="active" {% endif %}>Home</a>
 
-    <li><a class="item" href="/user/alert-methods">
-        <div {% if request.path=='/user/alert-methods' %} class="current" {% endif %}>
-          Alert Medium
-        </div>
-      </a>
-    </li>
-
-    <li><a class="item" href="/user/create-alert">
-        <div {% if request.path=='/user/create-alert' %} class="current" {% endif %}>
-          Create Alert
-        </div>
-      </a>
-    </li>
-    
-    <li class="hide">
-      <a class="item" href="/logout/">Logout</a>
-    </li>
-  </ul>
+  <a href="/user/alert-methods" {% if request.path == '/user/alert-methods' %} class="active" {% endif %}>Alert Medium</a>
+  <div class="dropdown">
+    <button {% if request.path == '/user/create-alert' %} class="dropbtn activebtn" {% else %} class="dropbtn" {% endif %}> Create Alert
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/user/create-alert" {% if request.path == '/user/create-alert' %} class="sub_active" {% endif %}>Create
+        alert</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+  <a href="#about" {% if request.path == '/about' %} class="active" {% endif %}>About</a>
+  <a href="/logout/">Logout</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
-{% endblock %}

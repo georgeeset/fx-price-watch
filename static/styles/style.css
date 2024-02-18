@@ -50,43 +50,6 @@ hr {
   background-image: linear-gradient(to right, #800080, #800080 50%, #FFA500 50%, #FFA500);
 }
 
-.menu {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: white;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-}
-
-.navbar {
-  position: sticky;
-  top: 0;
-}
-
-.item{
-  width: auto;
-  padding: 10px;
-  color: white;
-  background-color: rgb(124, 4, 124);
-  text-decoration: none;
-  font-size: small;
-  margin-right: 1%;
-}
-
-.current{
-  color: rgb(100, 253, 146);
-  font-weight: bold;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.item:hover{
-  background-color: rgb(77, 34, 41);
-}
-
 .hide {
   float: right;
 }
