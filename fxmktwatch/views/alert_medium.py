@@ -3,6 +3,7 @@ import math
 from os import environ
 from random import random
 from django.shortcuts import get_object_or_404, render
+from django.core.mail import send_mail
 
 from fxmktwatch.models import AlertMedium, CodeVerificationForm, EmailAlertForm, TelegramAlertForm, UserInfo
 from ..utils import constants, services
@@ -127,17 +128,6 @@ def alert_medium(request):
                         else:
                             verification_form.add_error ('code', 'Confirmation code not found. please try again')
                         break
-                        # if  item.verification_code == verification_form.data.get('code'):
-                        #     if item.is_expired:
-                        #         item.delete()
-                        #     else:
-                        #         item.verified = True
-                        #         item.save()
-
-                        #     break
-
-                        # else:
-                        #     verification_form.add_error ('code', 'Wrong code. please try again')
 
     return render(request, 'alert_methods_page.html', {'email_form': email_form, 'telegram_form': telegram_form, 'verification_form': verification_form, 'alert_medium': user_alert_medium})
 
