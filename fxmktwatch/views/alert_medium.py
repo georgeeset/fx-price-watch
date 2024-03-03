@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import math
+import random
 from os import environ
-from random import random
 from django.shortcuts import get_object_or_404, render
 from django.core.mail import send_mail
 

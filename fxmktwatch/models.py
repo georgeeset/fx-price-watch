@@ -45,6 +45,7 @@ class SignupForm(UserCreationForm):
     #                          widget=forms.TextInput(attrs={'placeholder': 'Email',
     #                                                        'class': 'form-control',
     #                                                        }))
+
     password1 = forms.CharField(max_length=50,
                                 required=True,
                                 widget=forms.PasswordInput(attrs={'placeholder': 'Password',
@@ -182,3 +183,39 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control'
     }))
+
+
+class PatternAlert(models.Model):
+    currency_pair: str = forms.CharField(max_length=100, required=True)
+    timeframe: str = forms.CharField(max_length=30, required=True)
+    note:str = forms.CharField(max_length=100 ,required=True)
+    alert_medium: AlertMedium = models.ForeignKey(AlertMedium, null=False, on_delete=models.CASCADE)
+    alertcount:int = models.IntegerField(null=False,default=0)
+    time_created = models.DateTimeField(auto_now_add=True)
+    enabled = models.CharField(max_length=10, null=False, default=1) #enabled or disabled
+
+class PatternAlertForm(ModelForm):
+    currency_pair = forms.CharField(required=True, widget=forms.Select(choices=constants.CURRENCY_CHOICES, attrs={ 'class':'form-control'}))
+    # alert_medium = forms.ModelMultipleChoiceField(queryset=AlertMedium.objects.all())
+    note = forms.CharField(required=True, max_length=100, min_length=10,
+                           widget=forms.Textarea(attrs={'size': '30', 'class':'form-note'})
+                           )
+    
+    timeframe = forms.CharField(max_length=4, required=True,
+                                widget=forms.Select(choices=constants.TIMEFRAME_CHOICES,
+                                                    attrs={ 'class':'form-control'}
+                                                    )
+                                )
+
+    def __init__(self, *args, user = None, **kwargs):
+        super(PatternAlertForm, self).__init__(*args, **kwargs)
+        if user is not None:
+            self.fields['alert_medium'].queryset = AlertMedium.objects.filter(user = user)
+    
+    class Meta:
+        model = PatternAlert
+        fields = ['currency_pair', 'timeframe', 'alert_medium','note']
+
+        widgets = {
+            'alert_medium' : forms.Select(attrs={ 'class':'form-control'})
+        }

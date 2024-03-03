@@ -7,9 +7,10 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/user/create-alert" {% if request.path == '/user/create-alert' %} class="sub_active" {% endif %}>Create
-        alert</a>
-      <a href="#">Link 2</a>
+      
+      <a href="/user/create-alert" {% if request.path == '/user/create-alert' %} class="subActive" {% endif %}>Price Alert
+      </a>
+      <a href="/user/create-alert/pattern-alert" {% if request.path == '/user/create-alert/pattern-alert' %} class="subActive" {% endif %}>Candlestick Pattern Alert</a>
       <a href="#">Link 3</a>
     </div>
   </div>
