@@ -6,7 +6,7 @@ from .views.add_alert import add_alert
 from .views.delete_alert import delete_alert
 from .views.alert_medium import alert_medium
 from .views.edit_alert import edit_alert
-from .views.pattern_alert import add_pattern_alert
+from .views.pattern_alert import PatternAlert
 
 urlpatterns = [
      path('', home, name='home'),
@@ -16,5 +16,5 @@ urlpatterns = [
      path('user/edit-alert/<int:id>', edit_alert, name='edit_alert'),
      path('user/delete-alert/<int:id>', delete_alert, name='delete_alert'),
      path('user/alert-methods', alert_medium, name='alert_medium'),
-     path('user/create-alert/pattern-alert', add_pattern_alert, name='add_alert')
+     path('user/create-alert/pattern-alert', PatternAlert.as_view(), name='add_alert')
 ]

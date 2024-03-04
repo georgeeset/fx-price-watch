@@ -5,8 +5,11 @@ from ..utils import constants
 
 
 def userPage(request):
-    if not request.user.is_authenticated:
+     if not request.user.is_authenticated:
          return redirect('/')
-    this_user = UserInfo.objects.get(username = request.user)
-    user_alerts = Alerts.objects.filter(userid = this_user).order_by(constants.time_created_neg)
-    return render(request, 'user_page.html', {'first_name': this_user.username, 'alert_list': user_alerts})
+     try:
+          this_user = UserInfo.objects.get(username = request.user)
+     except:
+          return redirect('/')
+     user_alerts = Alerts.objects.filter(userid = this_user).order_by(constants.time_created_neg)
+     return render(request, 'user_page.html', {'first_name': this_user.username, 'alert_list': user_alerts})

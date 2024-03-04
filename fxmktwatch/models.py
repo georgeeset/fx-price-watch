@@ -186,15 +186,15 @@ class LoginForm(forms.Form):
 
 
 class PatternAlert(models.Model):
-    currency_pair: str = forms.CharField(max_length=100, required=True)
-    timeframe: str = forms.CharField(max_length=30, required=True)
-    note:str = forms.CharField(max_length=100 ,required=True)
-    alert_medium: AlertMedium = models.ForeignKey(AlertMedium, null=False, on_delete=models.CASCADE)
-    alertcount:int = models.IntegerField(null=False,default=0)
+    currency_pair = models.CharField(max_length=50, null=False)
+    timeframe = models.CharField(max_length=30, null=False)
+    note = models.CharField(max_length=100, null=False)
+    alert_medium = models.ForeignKey(AlertMedium, null=False, on_delete=models.CASCADE)
+    alertcount = models.IntegerField(null=False, default=0)
     time_created = models.DateTimeField(auto_now_add=True)
-    enabled = models.CharField(max_length=10, null=False, default=1) #enabled or disabled
+    user_id = models.ForeignKey(UserInfo, null=False, on_delete=models.CASCADE)
 
-class PatternAlertForm(ModelForm):
+class PatternAlertForm(forms.ModelForm):
     currency_pair = forms.CharField(required=True, widget=forms.Select(choices=constants.CURRENCY_CHOICES, attrs={ 'class':'form-control'}))
     # alert_medium = forms.ModelMultipleChoiceField(queryset=AlertMedium.objects.all())
     note = forms.CharField(required=True, max_length=100, min_length=10,
@@ -217,5 +217,5 @@ class PatternAlertForm(ModelForm):
         fields = ['currency_pair', 'timeframe', 'alert_medium','note']
 
         widgets = {
-            'alert_medium' : forms.Select(attrs={ 'class':'form-control'})
+            'alert_medium' : forms.Select(attrs={ 'class':'form-control'}),
         }
