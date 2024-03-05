@@ -130,18 +130,27 @@ class Alerts(models.Model):
     def __str__(self):
         return f'{__name__}, currency_pair => {self.currency_pair}, setup_condition => {self.setup_condition}'
 
-    def to_dict(self):
-        my_dict = {"pair":  self.currency_pair,
-                   "setup_condition": self.setup_condition,
-                   "target_price": self.target_price ,
-                   "timeframe": self.timeframe,
-                   "repeat_alarm":  self.repeat_alarm,
-                   "alert_count": self.alertcount,
-                   "date_created": self.time_created ,
-                   "expiration_date": self.expiration ,
-                   "alertMedium": self.alert_medium.alert_type 
-                   }
-        return dict(my_dict)
+    @property
+    def condition(self):
+        condition = ''
+        for item in constants.CONDITION_CHOICES:
+            if item[0] == self.setup_condition:
+                condition = item[1]
+                break
+        return condition
+    
+    # def __dict__(self):
+    #     my_dict = {"pair":  self.currency_pair,
+    #                "setup_condition": self.condition,
+    #                "target_price": self.target_price ,
+    #                "timeframe": self.timeframe,
+    #                "repeat_alarm":  self.repeat_alarm,
+    #                "alert_count": self.alertcount,
+    #                "date_created": self.time_created ,
+    #                "expiration_date": self.expiration ,
+    #                "alertMedium": self.alert_medium.alert_type 
+    #                }
+    #     return dict(my_dict)
 
 class EmailAlertForm(forms.Form):
     # medium = forms.models.CharField(max_length=50, required=True, widget=forms.Select(choices=MEDIUM_CHOICES))
@@ -211,7 +220,7 @@ class PatternAlertForm(forms.ModelForm):
         super(PatternAlertForm, self).__init__(*args, **kwargs)
         if user is not None:
             self.fields['alert_medium'].queryset = AlertMedium.objects.filter(user = user)
-    
+
     class Meta:
         model = PatternAlert
         fields = ['currency_pair', 'timeframe', 'alert_medium','note']

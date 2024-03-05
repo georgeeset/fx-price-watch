@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% include 'partials/_header.html' %}
+
+<div class="center">
+    <div>
+    <h1 class="warning">Delete Alert</h1>
+    <br>
+    <h4>Warning!!!</4h>
+
+    <h3>
+    <p>This action cannot be undone..<br>
+        Are you sure you want to delete this Pattern Alert?
+    </p>
+    <h3>
+    <br> <br>
+
+    <div class="deleteAction">
+        <form method="post">
+            {% csrf_token %}
+            <input type='submit' name='yes' value='Yes'>
+            <input type='submit' name='no' value='No'>
+        </form>
+    </div>
+</div>
+
+</div>
+{%endblock%}

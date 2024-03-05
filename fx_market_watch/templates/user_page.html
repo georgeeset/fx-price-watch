@@ -40,7 +40,7 @@
                 {% for item in alert_list %}
                     {% if item.is_active %}
                             <div class="card">
-                                <div class="cardInfo" id={{ item.id }} , data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.setup_condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}", "Note": "{{item.note}}" }' data-isActive='{{ item.is_active }}'>
+                                <div class="cardInfo" id={{ item.id }} , data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}", "Note": "{{item.note}}" }' data-isActive='{{ item.is_active }}'>
                                     <div class="cardTitle">
                                         <div class="mediumIcon">
                                             {% if item.alert_medium.alert_type == 'telegram' %}
@@ -53,7 +53,7 @@
                                         <div class="pair"><b>{{ item.currency_pair }}</b> </div>
                                     </div>
                                     <hr>
-                                    <div class="condition">{{ item.setup_condition }}</div>
+                                    <div class="condition">{{ item.condition }}</div>
                                     <hr>
                                     <div><p>Setpoint: <b>{{ item.target_price }}</b></p></div>
 
@@ -73,17 +73,50 @@
             {% endif %}
             
         </div>
+        <div>
+        <div class="cardInfo">
+            <h3>CandleStick Pattern Alerts</h3>
+        </div>
+        <hr>
+        <div class="alertsGroup">
+
+        {% for item in pattern_alerts %}
+            <div class="card">
+                <div class="cardInfo">
+                    <div class="cardTitle">
+                        <div class="mediumIcon">
+                            {% if item.alert_medium.alert_type == 'telegram' %}
+                                <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
+                            {% elif item.alert_medium.alert_type == 'email' %}
+                            <img src="../static/styles/imgs/email-logo.png" alt="Email" height="45" width="45">
+                            {% endif %}
+                        </div>
+                        <div class="pair"><b>{{ item.currency_pair }}</b> </div>
+                    </div>
+                    <hr>
+                    <div><p>Setpoint: <b>Candlestick pattern formed around support or resistance</b></p></div>
+                    <div><p>Interval: <b>{{ item.timeframe }} candle stick timeframe</b></p></div> 
+                    
+                </div>
+
+                <div class='cardAction'> 
+                    <a class="btnDefault" href="/user/edit-pattern-alert/{{ item.id }}" role="button">Edit</a>
+                    <a class="btnAlarm" href="/user/delete-pattern-alert/{{ item.id }}" role="button">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>>
+
         <div class="cardInfo">
             <h3>History</h3>
           </div>
           <hr>
         <div class="alertsGroup">
           
-          
             {% for item in alert_list %}
                 {% if not item.is_active %}
                     <div class="card">
-                        <div class="cardInfo" id={{ item.id }} data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.setup_condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}", "Note": "{{item.note}}" }', data-isActive='{{item.is_active}}'>
+                        <div class="cardInfo" id={{ item.id }} data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}", "Note": "{{item.note}}" }', data-isActive='{{item.is_active}}'>
                             <div class="cardTitle">
                                 <div class="mediumIcon">
                                     {% if item.alert_medium.alert_type == 'telegram' %}
@@ -96,18 +129,13 @@
                                 <div class="pair"><h3>{{ item.currency_pair }}</h3> </div>
                             </div>
                             <hr>
-                            <div class="condition">{{ item.setup_condition }}</div>
+                            <div class="condition">{{ item.condition }}</div>
                             <hr>
                             <div><p>Setpoint: <b>{{ item.target_price }}</b></p></div>
 
                             <div><p>Interval: <b>{{ item.timeframe }} candle stick timeframe</b></p></div> 
                            
                         </div>
-    
-                    {% comment %} <div class='action'> {% if item.is_editable %}
-                            <a class="btnDefault" href="/user/edit-alert/{{ item.id }}" role="button">Edit</a>
-                            <a class="btnAlarm" href="/user/delete-alert/{{ item.id }}" role="button">Delete</a>
-                        {% endif %}</div> {% endcomment %}
 
                     </div>
                 {% endif %}

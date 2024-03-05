@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% include 'partials/_header.html' %}
+{% include 'partials/_navbar.html' %}
+
+<div class='centerForm'>
+    <form method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <br>
+        <input type='submit', name='add' value='Update'>
+    </form>
+</div>
+{%endblock%}

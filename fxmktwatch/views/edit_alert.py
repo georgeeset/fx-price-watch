@@ -32,7 +32,6 @@ def edit_alert(request, id):
         
         edit_form = AlertForm(request.POST or None, initial=init_data)
 
-
         user_alert_medium = AlertMedium.objects.filter(user=this_user, verified = True)
         return render(request, 'edit_alert_page.html',
                       {'first_name': this_user.username,
@@ -45,7 +44,7 @@ def edit_alert(request, id):
 
         form_alert_medium = request.POST['alert_medium']
 
-        print(form_alert_medium)
+        # print(form_alert_medium)
 
         if not alert_medium:
             updated_form.add_error('alert_medium', 'Add alert Mehod if you dont have')
