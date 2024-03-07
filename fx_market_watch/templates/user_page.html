@@ -40,7 +40,20 @@
                 {% for item in alert_list %}
                     {% if item.is_active %}
                             <div class="card">
-                                <div class="cardInfo" id={{ item.id }} , data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}", "Note": "{{item.note}}" }' data-isActive='{{ item.is_active }}'>
+                                <div class="cardInfo" id={{ item.id }} data-item='{
+                                    "pair": "{{ item.currency_pair}}",
+                                    "setup_condition": "{{item.condition}}",
+                                    "target_price":"{{ item.target_price }}",
+                                    "timeframe":"{{ item.timeframe }}",
+                                    "repeat_alarm": "{{ item.repeat_alarm }}",
+                                    "alert_count":"{{ item.alertcount }}",
+                                    "date_created":"{{ item.time_created }}",
+                                    "expiration_date":"{{ item.expiration }}",
+                                    "alertMedium":"{{ item.alert_medium.alert_type }}",
+                                    "Note": "{{item.note}}" 
+                                }' data-isActive='{{ item.is_active }}'
+                                data-edit='/user/edit-alert/{{ item.id }}'
+                                data-del='/user/delete-alert/{{ item.id }}'>
                                     <div class="cardTitle">
                                         <div class="mediumIcon">
                                             {% if item.alert_medium.alert_type == 'telegram' %}
@@ -81,8 +94,19 @@
         <div class="alertsGroup">
 
         {% for item in pattern_alerts %}
-            <div class="card">
-                <div class="cardInfo">
+            <div class="pattern">
+                <div class="cardInfo" id={{ item.id }} , data-item='{
+                    "pair": "{{ item.currency_pair}}",
+                    "setup_condition": "Candlestick pattern formed around support or resistance",
+                    "timeframe":"{{ item.timeframe}}",
+                    "alert_count":"{{ item.alertcount }}",
+                    "date_created":"{{ item.time_created }}",
+                    "alertMedium":"{{ item.alert_medium.alert_type }}",
+                    "Note": "{{item.note}}"
+                }'
+                data-isActive="True"
+                data-edit='/user/edit-pattern-alert/{{ item.id }}'
+                data-del='/user/delete-pattern-alert/{{ item.id }}'>
                     <div class="cardTitle">
                         <div class="mediumIcon">
                             {% if item.alert_medium.alert_type == 'telegram' %}
@@ -111,12 +135,24 @@
             <h3>History</h3>
           </div>
           <hr>
-        <div class="alertsGroup">
+        <div class="alertGroup">
           
             {% for item in alert_list %}
                 {% if not item.is_active %}
                     <div class="card">
-                        <div class="cardInfo" id={{ item.id }} data-item='{"pair": "{{ item.currency_pair}}", "setup_condition": "{{item.condition}}", "target_price":"{{ item.target_price }}", "timeframe":"{{ item.timeframe}}", "repeat_alarm": "{{ item.repeat_alarm}}", "alert_count":"{{ item.alertcount}}", "date_created":"{{ item.time_created }}", "expiration_date":"{{ item.expiration }}", "alertMedium":"{{ item.alert_medium.alert_type}}", "Note": "{{item.note}}" }', data-isActive='{{item.is_active}}'>
+                        <div class="cardInfo" id={{ item.id }}
+                        data-item='{
+                            "pair": "{{ item.currency_pair}}",
+                            "setup_condition": "{{item.condition}}",
+                            "target_price":"{{ item.target_price }}",
+                            "timeframe":"{{ item.timeframe}}",
+                            "repeat_alarm": "{{ item.repeat_alarm}}",
+                            "alert_count":"{{ item.alertcount}}",
+                            "date_created":"{{ item.time_created }}",
+                            "expiration_date":"{{ item.expiration }}",
+                            "alertMedium":"{{ item.alert_medium.alert_type}}",
+                            "Note": "{{item.note}}" }'
+                            data-isActive='{{item.is_active}}'>
                             <div class="cardTitle">
                                 <div class="mediumIcon">
                                     {% if item.alert_medium.alert_type == 'telegram' %}

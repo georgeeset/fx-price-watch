@@ -115,3 +115,14 @@ repeat_alarm = 'repeat_alarm'
 target_price = 'target_price'
 note = 'note'
 time_created_neg = '-time_created'
+
+
+# Approved candlestick chart patterns
+APPROVED_PATTERNS = ['engulfing', 'morningstar', 'morningdojistar', '3blackcrows',
+                     'abandonedbaby',  'dojistar', 'dragonflydoji', 'eveningdojistar',
+                     'gravestonedoji', 'longleggeddoji', 'morningdojistar', 'kicking',
+                     'kickingbylength', 'hammer', 'invertedhammer', '3whitesoldiers',
+                     'spinningtop', 'piercing', 'darkcloudcover', 'risefall3methods',
+                     'xsidegap3methods', 'shootingstar', 'hangingman', 'harami',
+                     'haramicross', 
+                     ]

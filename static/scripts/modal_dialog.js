@@ -27,19 +27,21 @@ alerts.forEach((card) => {
   card.addEventListener('click', () =>{
     var dataItem = JSON.parse (card.dataset.item);
     var isActive = card.dataset.isactive;
-    // console.log(card.dataset.item);
-    // console.log(isActive);
+    var del = card.dataset.del;
+    var edit = card.dataset.edit;
+    // console.log(edit);
+    // console.log(del);
     modalContent = generateContent(dataItem);
 
     modalContent=modalContent.concat(`<div class="cardAction">`);
     if (isActive == 'True'){
       modalContent = modalContent.concat(`
-      <a class="btnDefault" href="/user/edit-alert/${card.id}" role="button">Edit</a>
+      <a class="btnDefault" href=${edit} role="button">Edit</a>
       `);
     }
 
     modalContent = modalContent.concat(`
-    <a class="btnAlarm" href="/user/delete-alert/${card.id}"role="button">Delete</a></div>
+    <a class="btnAlarm" href=${del} role="button">Delete</a></div>
     `);
 
     document.getElementById("alertData").innerHTML = modalContent;
