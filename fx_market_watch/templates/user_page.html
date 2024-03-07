@@ -11,11 +11,11 @@
 </div>
 <div>
     <div class="allAlerts">
-
-        <div class="cardInfo">
+        <hr>
+        <div class="sectionInfo">
             <h3>Active Alerts</h3>
         </div>
-        <hr>
+        
         <div class="alertsGroup">
 
             {% if not alert_list %}
@@ -87,10 +87,11 @@
             
         </div>
         <div>
-        <div class="cardInfo">
+        <hr>
+        <div class="sectionInfo">
             <h3>CandleStick Pattern Alerts</h3>
         </div>
-        <hr>
+        
         <div class="alertsGroup">
 
         {% for item in pattern_alerts %}
@@ -131,10 +132,11 @@
         {% endfor %}
         </div>>
 
-        <div class="cardInfo">
+        <hr>
+        <div class="sectionInfo">
             <h3>History</h3>
           </div>
-          <hr>
+          
         <div class="alertGroup">
           
             {% for item in alert_list %}

@@ -16,8 +16,8 @@ body {
 }
 
 hr {
-  margin: 0px;
-  margin-bottom: 5px;
+  margin-top: 4px;
+  margin-bottom: 1px;
 }
 
 .banner-head {
@@ -206,4 +206,9 @@ footer {
 .beginerCard, .candleImage {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border-radius: 5px;
+}
+
+.sectionInfo > h3{
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
