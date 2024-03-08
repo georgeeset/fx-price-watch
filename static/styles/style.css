@@ -79,9 +79,11 @@ hr {
 
 .ftNote{
   text-align: left;
+  text-align: justify;
   font-size: 12px;
   display: block;
   max-width: 800px;
+  margin: 10px;
 }
 
 
