@@ -1,0 +1,214 @@
+
+body {
+  background-repeat: no-repeat;
+  background: repeating-radial-gradient(rgba(255, 255, 255, 0.8), rgba(212, 149, 209, 0.9)), url("imgs/background.jpg");
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-family: var(--font-family-primary);
+  color: var(--body-fg);
+  /* setup the page body layout*/
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+   /* setup the page body layout*/
+}
+
+hr {
+  margin-top: 4px;
+  margin-bottom: 1px;
+}
+
+.banner-head {
+  display: flex;
+  /* gap: 10%; */
+  justify-content: center;
+  background-color: whitesmoke;
+  padding-top: 3%;
+  padding-bottom:2%
+}
+
+.slogan{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-style: italic;
+  text-align: center;
+  font-size: 24px;
+}
+
+.banner {
+  font-size: 40px;
+  font-weight: bold;
+  /* text-align: center; */
+  text-shadow: 2px 2px #000000;
+  background-image: linear-gradient(to right, #FFA500, #FFA500 50%, #800080 50%, #800080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.banner:hover {
+  background-image: linear-gradient(to right, #800080, #800080 50%, #FFA500 50%, #FFA500);
+}
+
+.hide {
+  float: right;
+}
+
+.menu .item{
+  list-style: none;
+  float: left;
+}
+
+.iconItem {
+  display: inline;
+  margin-left: 20px;
+}
+
+.container {
+  background-color: whitesmoke;
+  text-align: center;
+  /* padding-bottom: 50px; */
+  /* padding-top: 10px; */
+  position:absolute;
+  width: 100%;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.bodyContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.column {
+  width: 30%;
+  margin-right: 10px;
+  display: inline;
+}
+
+.subTitle{
+  padding-left: 10%;
+  overflow: hidden;
+}
+
+.btnDefault {
+  width: auto;
+  color: white;
+  background-color: rgb(209, 84, 188);
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5%;
+} /* Gray */
+
+.btnDefault:hover {
+  background-color: purple;
+}
+
+.btnAlarm {
+  width: auto;
+  color: white;
+  background-color: rgb(219, 23, 115);
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5%;
+}
+
+.btnAlarm:hover {
+  background-color: orangered;
+}
+
+.center {
+  justify-content: center;
+  display: flex;
+}
+
+.signupContainer, .loginContainer {
+  transition: opacity 0.3s linear;
+  /* position: absolute; */
+  position: relative;
+  justify-content: center;
+  display: flex;
+  /* top: 200px; */
+}
+
+.signupContainer {
+  opacity: 1;
+  display: block;
+}
+
+.loginContainer {
+  opacity: 0;
+  display: none
+}
+
+.imageSlide {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.methodItem {
+  display: block;
+  padding: 2%;
+}
+
+.warning {
+  color: red;
+}
+
+.alertsGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.allAlerts {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+}
+
+.sectionTitle {
+  padding-left: 15%;
+}
+
+.beginerCard {
+  background-color: rgba(245, 245, 245, 0.8);
+  padding:10px;
+}
+
+.instructions {
+  list-style:square;
+}
+
+.instructions > li {
+  padding-bottom: 5px;
+}
+
+.candleImage{
+  margin-top: 20px;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.candleImage > img{
+  width: 45vw;
+  min-width: 120px;
+}
+
+.beginerCard, .candleImage {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.sectionInfo > h3{
+  margin-top: 1px;
+  margin-bottom: 1px;
+}

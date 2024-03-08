@@ -1,19 +1,19 @@
 <div class="topnav" id="myTopnav">
-  <a href="/user" {% if request.path == '/user/' %} class="active" {% endif %}>Home</a>
+  <a href="/user/" {% if request.path == '/user/' %} class="active" {% endif %}>Home</a>
 
-  <a href="/user/alert-methods" {% if request.path == '/user/alert-methods' %} class="active" {% endif %}>Alert Medium</a>
+  <a href="/user/alert-methods/" {% if request.path == '/user/alert-methods/' %} class="active" {% endif %}>Alert Medium</a>
   <div class="dropdown">
-    <button {% if request.path == '/user/create-alert' %} class="dropbtn activebtn" {% else %} class="dropbtn" {% endif %}> Create Alert
+    <button {% if request.path == '/user/create-alert/' %} class="dropbtn activebtn" {% else %} class="dropbtn" {% endif %}> Create Alert
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
       
-      <a href="/user/create-alert" {% if request.path == '/user/create-alert' %} class="subActive" {% endif %}>Price Alert
+      <a href="/user/create-alert/" {% if request.path == '/user/create-alert/' %} class="subActive" {% endif %}>Price Alert
       </a>
-      <a href="/user/create-alert/pattern-alert" {% if request.path == '/user/create-alert/pattern-alert' %} class="subActive" {% endif %}>Candlestick Pattern Alert</a>
+      <a href="/user/create-alert/pattern-alert/" {% if request.path == '/user/create-alert/pattern-alert/' %} class="subActive" {% endif %}>Candlestick Pattern Alert</a>
     </div>
   </div>
-  <a href="#about" {% if request.path == '/about' %} class="active" {% endif %}>About</a>
+  <a href="#about" {% if request.path == '/about/' %} class="active" {% endif %}>About</a>
   <a href="/logout/">Logout</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>

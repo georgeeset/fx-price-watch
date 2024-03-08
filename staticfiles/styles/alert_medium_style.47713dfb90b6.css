@@ -1,0 +1,49 @@
+
+.alertMediumItems{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: auto;
+}
+
+.methodItem{
+    display: block;
+    background-color: rgb(245, 245, 245, 0.75);
+    border-radius: 5px;
+    min-width: 130px;
+    min-height: 250px;
+    padding:10px;
+    /* height: min-content; */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mediumLogo{
+    display: flex;
+    justify-content: end;
+}
+
+.telegramSteps > li{
+    padding-bottom: 8px;
+}
+
+.verified{
+    font-size: xx-large;
+    font-weight: 600;
+    color: green;
+  }
+
+.horizontalButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.resendButton {
+    align-self: flex-end;
+}

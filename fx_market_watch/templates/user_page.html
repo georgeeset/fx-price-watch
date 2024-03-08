@@ -25,9 +25,9 @@
                         <hr>
                         <ul class="instructions">
                             <li>Get Started.</li>
-                            <li>Goto Alert Medium page <a href="/user/alert-methods"><b>Alert Medium</b></a></li>
+                            <li>Goto Alert Medium page <a href="/user/alert-methods/"><b>Alert Medium</b></a></li>
                             <li>Add any alert method of your choice and follow the steps to confirm registeration</li>
-                            <li>Goto Create Alert page to set your alert. <a href="/user/create-alert"><b>Crate Alert</b></a></li>
+                            <li>Goto Create Alert page to set your alert. <a href="/user/create-alert/"><b>Crate Alert</b></a></li>
                         </ul>
                     </div>
 
@@ -52,8 +52,8 @@
                                     "alertMedium":"{{ item.alert_medium.alert_type }}",
                                     "Note": "{{item.note}}" 
                                 }' data-isActive='{{ item.is_active }}'
-                                data-edit='/user/edit-alert/{{ item.id }}'
-                                data-del='/user/delete-alert/{{ item.id }}'>
+                                data-edit='/user/edit-alert/{{ item.id }}/'
+                                data-del='/user/delete-alert/{{ item.id }}/'>
                                     <div class="cardTitle">
                                         <div class="mediumIcon">
                                             {% if item.alert_medium.alert_type == 'telegram' %}
@@ -75,8 +75,8 @@
                                 </div>
             
                                 <div class='cardAction'> {% if item.is_active %}
-                                        <a class="btnDefault" href="/user/edit-alert/{{ item.id }}" role="button">Edit</a>
-                                        <a class="btnAlarm" href="/user/delete-alert/{{ item.id }}" role="button">Delete</a>
+                                        <a class="btnDefault" href="/user/edit-alert/{{ item.id }}/" role="button">Edit</a>
+                                        <a class="btnAlarm" href="/user/delete-alert/{{ item.id }}/" role="button">Delete</a>
                                     {% endif %}
                                 </div>
 
@@ -86,7 +86,7 @@
             {% endif %}
             
         </div>
-        <div>
+    <div>
         <hr>
         <div class="sectionInfo">
             <h3>CandleStick Pattern Alerts</h3>
@@ -106,8 +106,8 @@
                     "Note": "{{item.note}}"
                 }'
                 data-isActive="True"
-                data-edit='/user/edit-pattern-alert/{{ item.id }}'
-                data-del='/user/delete-pattern-alert/{{ item.id }}'>
+                data-edit='/user/edit-pattern-alert/{{ item.id }}/'
+                data-del='/user/delete-pattern-alert/{{ item.id }}/'>
                     <div class="cardTitle">
                         <div class="mediumIcon">
                             {% if item.alert_medium.alert_type == 'telegram' %}
@@ -125,8 +125,8 @@
                 </div>
 
                 <div class='cardAction'> 
-                    <a class="btnDefault" href="/user/edit-pattern-alert/{{ item.id }}" role="button">Edit</a>
-                    <a class="btnAlarm" href="/user/delete-pattern-alert/{{ item.id }}" role="button">Delete</a>
+                    <a class="btnDefault" href="/user/edit-pattern-alert/{{ item.id }}/" role="button">Edit</a>
+                    <a class="btnAlarm" href="/user/delete-pattern-alert/{{ item.id }}/" role="button">Delete</a>
                 </div>
             </div>
         {% endfor %}
@@ -154,7 +154,8 @@
                             "expiration_date":"{{ item.expiration }}",
                             "alertMedium":"{{ item.alert_medium.alert_type}}",
                             "Note": "{{item.note}}" }'
-                            data-isActive='{{item.is_active}}'>
+                            data-isActive='{{item.is_active}}'
+                            data-del='/user/delete-alert/{{ item.id }}/'>
                             <div class="cardTitle">
                                 <div class="mediumIcon">
                                     {% if item.alert_medium.alert_type == 'telegram' %}
@@ -193,7 +194,6 @@
         <p class="dialogTitle"><h2>Details</h2></p>
         <hr>
         <div id="alertData">
-           
         </div>
       </div>
     </div>
