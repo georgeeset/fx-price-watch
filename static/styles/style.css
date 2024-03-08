@@ -8,11 +8,11 @@ body {
   font-size: 1rem;
   font-family: var(--font-family-primary);
   color: var(--body-fg);
-  /* setup the page body layout*/
+  
   height: 100vh;
   display: flex;
   flex-direction: column;
-   /* setup the page body layout*/
+  
 }
 
 hr {
@@ -66,12 +66,24 @@ hr {
 
 .container {
   background-color: whitesmoke;
-  text-align: center;
+  /* text-align: center; */
   /* padding-bottom: 50px; */
   /* padding-top: 10px; */
   position:absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
+
+
+.ftNote{
+  text-align: left;
+  font-size: 12px;
+  display: block;
+  max-width: 800px;
+}
+
 
 footer {
   margin-top: auto;
@@ -211,4 +223,29 @@ footer {
 .sectionInfo > h3{
   margin-top: 1px;
   margin-bottom: 1px;
+}
+
+.outer{
+  font-family: Arial;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerNote{
+  max-width: 800px;
+  padding: 20px;
+  font-size: 16px;
+  background-color: rgba(250, 231, 231, 0.4);
+}
+
+.innerNote > p{
+  padding: 10px;
+}
+
+.innerNote > ul > li{
+  padding: 10px;
 }
