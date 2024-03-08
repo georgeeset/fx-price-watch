@@ -1,7 +1,7 @@
 
-.card {
+.card, .pattern {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+    /* transition: 0.3s; */
     width: 100%;
     min-width: 100px;
     margin-top: 10px;
@@ -15,7 +15,7 @@
 }
 
 .card:hover {
-    background-color: whitesmoke;
+    background-color:white;
 }
 
 .cardInfo {
@@ -43,13 +43,10 @@
 }
 
 .pattern{
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-                url("imgs/pattern_bg.jpg"), no-repeat;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 100%;
-    min-width: 100px;
-    margin-top: 10px;
-    max-width: 300px;
-    border-radius: 5px;
+    background: linear-gradient(rgba(220, 207, 231, 0.9), rgba(238, 212, 224, 0.9));
+    transition: 1s;
+}
+
+.pattern:hover{
+    background: linear-gradient(rgba(242, 236, 247, 0.9), rgba(248, 236, 242, 0.9));
 }

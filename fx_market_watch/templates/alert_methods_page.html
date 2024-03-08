@@ -5,6 +5,8 @@
 {% include 'partials/_header.html' %}
 {% include 'partials/_navbar.html' %}
 
+{% load static %}
+
 <div class="sectionTitle">
     <h3 >  Alert Medium</h3>
 </div>
@@ -13,7 +15,7 @@
         
         <div class="methodItem">
             <div class="mediumLogo">
-                <img src="../static/styles/imgs/email-logo.png" alt="Email" height="45" width="45">
+                <img src="{% static 'styles/imgs/email-logo.png'%}" alt="Email" height="45" width="45">
             </div>
             {% for method in alert_medium %}
                 {% if method.alert_type == 'email' %}
@@ -57,7 +59,7 @@
             
             <div class="methodItem">
                 <div class="mediumLogo">
-                    <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="55" width="55">
+                    <img src="{% static 'styles/imgs/telegram-logo.png' %}" alt="Telegram" height="55" width="55">
                 </div>
                 {% for method in alert_medium %}
                     
