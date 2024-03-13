@@ -97,6 +97,8 @@ CURRENCY_CHOICES = [
     ('AVAXUSDT', 'AVAX/USD')
 ]
 
+ONESHOT_PATTERN_ALERT = ['H1', 'H4']
+
 INTERESTSCHOICES = [
     ('Forex','Forex' ),
     ('Crypto', 'Crypto'),

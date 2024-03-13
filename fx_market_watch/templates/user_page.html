@@ -95,40 +95,42 @@
         <div class="alertsGroup">
 
         {% for item in pattern_alerts %}
-            <div class="pattern">
-                <div class="cardInfo" id={{ item.id }} , data-item='{
-                    "pair": "{{ item.currency_pair}}",
-                    "setup_condition": "Candlestick pattern formed around support or resistance",
-                    "timeframe":"{{ item.timeframe}}",
-                    "alert_count":"{{ item.alertcount }}",
-                    "date_created":"{{ item.time_created }}",
-                    "alertMedium":"{{ item.alert_medium.alert_type }}",
-                    "Note": "{{item.note}}"
-                }'
-                data-isActive="True"
-                data-edit='/user/edit-pattern-alert/{{ item.id }}/'
-                data-del='/user/delete-pattern-alert/{{ item.id }}/'>
-                    <div class="cardTitle">
-                        <div class="mediumIcon">
-                            {% if item.alert_medium.alert_type == 'telegram' %}
-                                <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
-                            {% elif item.alert_medium.alert_type == 'email' %}
-                            <img src="../static/styles/imgs/email-logo.png" alt="Email" height="45" width="45">
-                            {% endif %}
+            {% if item.is_active %}
+                <div class="pattern">
+                    <div class="cardInfo" id={{ item.id }} , data-item='{
+                        "pair": "{{ item.currency_pair}}",
+                        "setup_condition": "Candlestick pattern formed around support or resistance",
+                        "timeframe":"{{ item.timeframe}}",
+                        "alert_count":"{{ item.alertcount }}",
+                        "date_created":"{{ item.time_created }}",
+                        "alertMedium":"{{ item.alert_medium.alert_type }}",
+                        "Note": "{{item.note}}"
+                    }'
+                    data-isActive='{{ item.is_active }}'
+                    data-edit='/user/edit-pattern-alert/{{ item.id }}/'
+                    data-del='/user/delete-pattern-alert/{{ item.id }}/'>
+                        <div class="cardTitle">
+                            <div class="mediumIcon">
+                                {% if item.alert_medium.alert_type == 'telegram' %}
+                                    <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
+                                {% elif item.alert_medium.alert_type == 'email' %}
+                                <img src="../static/styles/imgs/email-logo.png" alt="Email" height="45" width="45">
+                                {% endif %}
+                            </div>
+                            <div class="pair"><b>{{ item.currency_pair }}</b> </div>
                         </div>
-                        <div class="pair"><b>{{ item.currency_pair }}</b> </div>
+                        <hr>
+                        <div><p>Setpoint: <b>Candlestick pattern formed around support or resistance</b></p></div>
+                        <div><p>Interval: <b>{{ item.timeframe }} candle stick timeframe</b></p></div> 
+                        
                     </div>
-                    <hr>
-                    <div><p>Setpoint: <b>Candlestick pattern formed around support or resistance</b></p></div>
-                    <div><p>Interval: <b>{{ item.timeframe }} candle stick timeframe</b></p></div> 
-                    
-                </div>
 
-                <div class='cardAction'> 
-                    <a class="btnDefault" href="/user/edit-pattern-alert/{{ item.id }}/" role="button">Edit</a>
-                    <a class="btnAlarm" href="/user/delete-pattern-alert/{{ item.id }}/" role="button">Delete</a>
+                    <div class='cardAction'> 
+                        <a class="btnDefault" href="/user/edit-pattern-alert/{{ item.id }}/" role="button">Edit</a>
+                        <a class="btnAlarm" href="/user/delete-pattern-alert/{{ item.id }}/" role="button">Delete</a>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
         </div>
         <hr>
@@ -178,6 +180,41 @@
                     </div>
                 {% endif %}
             {% endfor %}
+                
+            {% for item in pattern_alerts %}
+                {% if not item.is_active %}
+                <div class="pattern">
+                    <div class="cardInfo" id={{ item.id }} , data-item='{
+                        "pair": "{{ item.currency_pair}}",
+                        "setup_condition": "Candlestick pattern formed around support or resistance",
+                        "timeframe":"{{ item.timeframe}}",
+                        "alert_count":"{{ item.alertcount }}",
+                        "date_created":"{{ item.time_created }}",
+                        "alertMedium":"{{ item.alert_medium.alert_type }}",
+                        "Note": "{{item.note}}"
+                    }'
+                    data-isActive='False'
+                    data-edit='/user/edit-pattern-alert/{{ item.id }}/'
+                    data-del='/user/delete-pattern-alert/{{ item.id }}/'>
+                        <div class="cardTitle">
+                            <div class="mediumIcon">
+                                {% if item.alert_medium.alert_type == 'telegram' %}
+                                    <img src="../static/styles/imgs/telegram-logo.png" alt="Telegram" height="45" width="45">
+                                {% elif item.alert_medium.alert_type == 'email' %}
+                                <img src="../static/styles/imgs/email-logo.png" alt="Email" height="45" width="45">
+                                {% endif %}
+                            </div>
+                            <div class="pair"><b>{{ item.currency_pair }}</b> </div>
+                        </div>
+                        <hr>
+                        <div><p>Setpoint: <b>Candlestick pattern formed around support or resistance</b></p></div>
+                        <div><p>Interval: <b>{{ item.timeframe }} candle stick timeframe</b></p></div> 
+                        
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+
         </div>
       </div>
 

@@ -203,6 +203,13 @@ class PatternAlert(models.Model):
     time_created = models.DateTimeField(auto_now_add=True)
     user_id = models.ForeignKey(UserInfo, null=False, on_delete=models.CASCADE)
 
+    @property
+    def is_active(self):
+        """Determine if a patern alert is still eligable for to receive message"""
+        if self.timeframe in constants.ONESHOT_PATTERN_ALERT and self.alertcount > 0:
+            return False
+        return True
+
 class PatternAlertForm(forms.ModelForm):
     currency_pair = forms.CharField(required=True, widget=forms.Select(choices=constants.CURRENCY_CHOICES, attrs={ 'class':'form-control'}))
     # alert_medium = forms.ModelMultipleChoiceField(queryset=AlertMedium.objects.all())
